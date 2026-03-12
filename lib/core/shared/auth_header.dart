@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/core/utils/assets_helper/assets_helper.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 
-class LoginHeader extends StatelessWidget {
-  const LoginHeader({super.key, this.height = 220});
+class AuthHeader extends StatelessWidget {
+  const AuthHeader({super.key, this.height = 220});
   final double height;
   @override
   Widget build(BuildContext context) {
