@@ -17,7 +17,7 @@ class LoginButton extends StatelessWidget {
             onPressed: () {},
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.white,
-              minimumSize: Size(double.infinity, 50.h),
+              minimumSize: Size(double.infinity, 55.h),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12.r),
               ),

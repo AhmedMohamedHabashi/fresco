@@ -19,4 +19,24 @@ class AppTextStyle {
     fontWeight: FontWeight.w300,
     color: AppColors.white,
   );
+  static TextStyle bodyText20 = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w300,
+    color: AppColors.white,
+  );
+  static TextStyle bodyText22 = TextStyle(
+    fontSize: 22.sp,
+    fontWeight: FontWeight.w300,
+    color: AppColors.white,
+  );
+  static TextStyle bodyText14 = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w300,
+    color: AppColors.white,
+  );
+  static TextStyle bodyText12 = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w300,
+    color: AppColors.white,
+  );
 }

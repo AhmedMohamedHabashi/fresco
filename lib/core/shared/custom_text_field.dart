@@ -43,7 +43,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               fontWeight: FontWeight.w500,
             ),
           ),
-          SizedBox(height: 13.h),
+          SizedBox(height: 10.h),
           TextField(
             obscureText: isObscure,
             cursorColor: AppColors.primaryColor,

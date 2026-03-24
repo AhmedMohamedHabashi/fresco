@@ -13,8 +13,7 @@ class SignUpViewBody extends StatelessWidget {
         top: false,
         child: Column(
           children: [
-            const AuthHeader(height: 200),
-            const SizedBox(height: 15),
+            const AuthHeader(height: 210),
             const CustomTextField(
               title: 'Full Name',
               hintText: 'Enter your Full Name',
@@ -32,7 +31,10 @@ class SignUpViewBody extends StatelessWidget {
               hintText: 'Enter your password',
               obscureText: true,
             ),
-            LoginButton(buttonText: 'Sign Up'),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: LoginButton(buttonText: 'Sign Up'),
+            ),
           ],
         ),
       ),
