@@ -14,13 +14,13 @@ class AuthHeader extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(30.r),
-          bottomRight: Radius.circular(30.r),
+          bottomLeft: Radius.elliptical(170.r, 28.r),
+          bottomRight: Radius.elliptical(170.r, 28.r),
         ),
       ),
       child: Padding(
         padding: EdgeInsets.all(8.w),
-        child: Center(child: Image.asset(AssetsHelper.logo, height: 200.h)),
+        child: Center(child: Image.asset(AssetsHelper.logo, height: 180.h)),
       ),
     );
   }
