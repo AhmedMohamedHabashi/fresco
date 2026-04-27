@@ -34,6 +34,11 @@ class AppTextStyle {
     fontWeight: FontWeight.w300,
     color: AppColors.white,
   );
+  static TextStyle bodyText13 = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeight.w300,
+    color: AppColors.white,
+  );
   static TextStyle bodyText12 = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontWeight.w300,

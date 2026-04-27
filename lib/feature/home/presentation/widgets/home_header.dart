@@ -4,7 +4,7 @@ import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/feature/home/presentation/widgets/list_item.dart';
 import 'package:fresco/feature/home/presentation/widgets/main_header.dart';
 import 'package:fresco/feature/home/presentation/widgets/section_title.dart';
-import 'package:fresco/feature/home/presentation/widgets/search_home.dart';
+import 'package:fresco/core/shared/custom_search.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({super.key});
@@ -62,7 +62,7 @@ class HomeHeader extends StatelessWidget {
           bottom: -15.h,
           left: 35.w,
           right: 35.w,
-          child: SearchHome(),
+          child: CustomSearch(hintText: "Search in Store"),
         ),
       ],
     );

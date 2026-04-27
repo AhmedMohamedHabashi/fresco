@@ -26,14 +26,17 @@ class MainHeader extends StatelessWidget {
         Stack(
           clipBehavior: Clip.none,
           children: [
-            Icon(
-              Icons.shopping_bag_outlined,
-              size: 30.sp,
-              color: AppColors.white,
+            IconButton(
+              icon: Icon(
+                Icons.shopping_cart_outlined,
+                size: 30.sp,
+                color: AppColors.white,
+              ),
+              onPressed: () {},
             ),
             Positioned(
-              right: -4.w,
-              top: -4.h,
+              right: -1.w,
+              top: -1.h,
               child: Container(
                 padding: EdgeInsets.all(4.w),
                 decoration: BoxDecoration(
@@ -46,7 +49,7 @@ class MainHeader extends StatelessWidget {
                     '3',
                     style: TextStyle(
                       color: AppColors.primaryColor,
-                      fontSize: 8.sp,
+                      fontSize: 10.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

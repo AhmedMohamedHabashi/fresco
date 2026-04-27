@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/feature/home/presentation/widgets/home_header.dart';
 import 'package:fresco/feature/home/presentation/widgets/home_list_image.dart';
-import 'package:fresco/feature/home/presentation/widgets/navigation_bar.dart';
+import 'package:fresco/core/shared/custom_navigation_bar.dart';
 import 'package:fresco/feature/home/presentation/widgets/products_list.dart';
 import 'package:fresco/feature/home/presentation/widgets/section_title.dart';
 
@@ -20,13 +20,12 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      bottomNavigationBar: CustomNavigationBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            HomeHeader(),
-            HomeListImage(),
-            SectionTitle(title: 'Popular Products'),
+            const HomeHeader(),
+            const HomeListImage(),
+            const SectionTitle(title: 'Popular Products'),
             ProductsList(
               isFavorite: isFavorite,
               onTapFavorite: () {
@@ -38,6 +37,7 @@ class _HomeViewState extends State<HomeView> {
           ],
         ),
       ),
+      bottomNavigationBar: const CustomNavigationBar(),
     );
   }
 }

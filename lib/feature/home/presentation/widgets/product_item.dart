@@ -16,7 +16,7 @@ class ProductItem extends StatelessWidget {
       height: 210.h,
       decoration: BoxDecoration(
         color: AppColors.lightBlue.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(15.r),
+        borderRadius: BorderRadius.circular(20.r),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
