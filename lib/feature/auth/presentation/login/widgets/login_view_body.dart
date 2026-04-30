@@ -14,7 +14,10 @@ class LoginViewBody extends StatelessWidget {
       child: Column(
         children: [
           const AuthHeader(),
-          const WelcomeWidget(),
+          const WelcomeWidget(
+            title: 'Welcome Back to Fresco!',
+            subtitle: 'Please sign in to continue',
+          ),
           const CustomTextField(),
           const CustomTextField(
             title: 'Password',
@@ -23,7 +26,7 @@ class LoginViewBody extends StatelessWidget {
             obscureText: true,
           ),
           const LoginButton(buttonText: 'Login'),
-          CreateAccountLine(),
+          const CreateAccountLine(),
         ],
       ),
     );

@@ -5,7 +5,8 @@ import 'package:fresco/core/utils/assets_helper/assets_helper.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 
 class HomeListImage extends StatefulWidget {
-  const HomeListImage({super.key});
+  const HomeListImage({super.key, this.heightBanar = 200.0});
+  final double heightBanar;
 
   @override
   State<HomeListImage> createState() => _HomeListImageState();
@@ -51,7 +52,7 @@ class _HomeListImageState extends State<HomeListImage> {
     return Column(
       children: [
         SizedBox(
-          height: 200.h,
+          height: widget.heightBanar.h,
           child: Listener(
             onPointerDown: (_) => timer?.cancel(),
             onPointerCancel: (_) => startTimer(),
@@ -67,7 +68,7 @@ class _HomeListImageState extends State<HomeListImage> {
               children: List.generate(
                 AssetsHelper.imagesList.length,
                 (index) => Padding(
-                  padding: EdgeInsets.only(right: 10.w, left: 10.w, top: 26.h),
+                  padding: EdgeInsets.only(right: 10.w, left: 10.w, top: 25.h),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.r),
@@ -93,7 +94,7 @@ class _HomeListImageState extends State<HomeListImage> {
             ),
           ),
         ),
-        SizedBox(height: 10.h),
+        SizedBox(height: 8.h),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(

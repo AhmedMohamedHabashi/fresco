@@ -10,7 +10,21 @@ class AssetsHelper {
     'assets/images/HomeList.jpg',
     'assets/images/HomeList_1.jpg',
     'assets/images/HomeList_2.jpg',
+    'assets/images/cart_home_5.jpg',
+    'assets/images/Man/T_shirts.jpg',
   ];
+  // static const List<Map<String, String>> categoriesMan = [
+  //   {'image': 'assets/images/Man/men.jpg', 'title': 'Men’s Fashion'},
+  //   {'image': 'assets/images/Man/Eyewears.jpg', 'title': 'Eyewears'},
+  //   {'image': 'assets/images/Man/Footwear.jpg', 'title': 'Footwear'},
+  //   {'image': 'assets/images/Man/Jeans.jpg', 'title': 'Jeans'},
+  // ];
+  // static const List<Map<String, String>> categoriesWoman = [
+  //   {'image': 'assets/images/Woman/Bags.jpg', 'title': 'Bags'},
+  //   {'image': 'assets/images/Woman/Footwear.jpg', 'title': 'Footwear'},
+  //   {'image': 'assets/images/Woman/Dresses.jpg', 'title': 'Dresses'},
+  //   {'image': 'assets/images/Woman/Eyewear.jpg', 'title': 'Eyewear'},
+  // ];
 }
 
 

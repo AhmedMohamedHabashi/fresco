@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fresco/core/app_responsive.dart';
-import 'package:fresco/feature/home/presentation/views/home_view.dart';
+import 'package:fresco/feature/cart/presentation/views/cart_screen.dart';
+import 'package:fresco/feature/wishlist/presentation/views/wishlist_screen.dart';
+import 'package:fresco/feature/wishlist/presentation/widgets/cart_item.dart';
 
 class FrescoApp extends StatelessWidget {
   const FrescoApp({super.key});
@@ -11,7 +13,7 @@ class FrescoApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(fontFamily: 'Poppins'),
         title: 'Fresco App',
-        home: const HomeView(),
+        home: CartScreen(),
       ),
     );
   }
