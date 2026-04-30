@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'quantity_selector.dart';
-import 'add_to_cart.dart';
+import '../../../../core/shared/add_to_cart.dart';
 
 class ItemActions extends StatelessWidget {
   final String price, oldPrice;
