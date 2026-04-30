@@ -12,21 +12,19 @@ class SectionHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        children: [
-          Text(
-            ListesHelper.categories[selectedIndex],
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: AppTextStyle.bodyText16.copyWith(
-              fontWeight: FontWeight.bold,
-              color: AppColors.primaryColor,
-            ),
+    return Column(
+      children: [
+        Text(
+          ListesHelper.categories[selectedIndex],
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: AppTextStyle.bodyText16.copyWith(
+            fontWeight: FontWeight.bold,
+            color: AppColors.primaryColor,
           ),
-          HomeListImage(heightBanar: 135.h),
-        ],
-      ),
+        ),
+        HomeListImage(heightBanar: 135.h),
+      ],
     );
   }
 }

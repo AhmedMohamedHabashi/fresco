@@ -16,24 +16,27 @@ class DashboardCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 110.w,
-      decoration: BoxDecoration(
-        color: AppColors.lightBlue.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(20.r),
-        border: Border.all(color: AppColors.primaryColor, width: 1),
-      ),
-      child: ListView.builder(
-        itemCount: ListesHelper.categories.length,
-        itemBuilder: (context, index) {
-          final isSelected = index == selectedIndex;
-          return CategoryLayout(
-            index: index,
-            title: ListesHelper.categories[index],
-            isSelected: isSelected,
-            onSelect: onSelect,
-          );
-        },
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 25).r,
+      child: Container(
+        width: 110.w,
+        decoration: BoxDecoration(
+          color: AppColors.lightBlue.withOpacity(0.1),
+          borderRadius: BorderRadius.circular(20.r),
+          border: Border.all(color: AppColors.primaryColor, width: 1),
+        ),
+        child: ListView.builder(
+          itemCount: ListesHelper.categories.length,
+          itemBuilder: (context, index) {
+            final isSelected = index == selectedIndex;
+            return CategoryLayout(
+              index: index,
+              title: ListesHelper.categories[index],
+              isSelected: isSelected,
+              onSelect: onSelect,
+            );
+          },
+        ),
       ),
     );
   }
