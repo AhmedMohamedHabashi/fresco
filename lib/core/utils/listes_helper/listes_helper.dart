@@ -4,7 +4,7 @@ class ListesHelper {
     "Women’s Fashion",
     "Skincare",
     "Beauty",
-    "Headphones",
+    "Phones",
     "Cameras",
     "Laptops",
     "Baby & Toys",
