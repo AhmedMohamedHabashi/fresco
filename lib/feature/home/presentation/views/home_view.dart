@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/feature/home/presentation/widgets/home_header.dart';
 import 'package:fresco/feature/home/presentation/widgets/home_list_image.dart';
@@ -34,10 +35,10 @@ class _HomeViewState extends State<HomeView> {
                 });
               },
             ),
+            SizedBox(height: 20.h),
           ],
         ),
       ),
-      bottomNavigationBar: const CustomNavigationBar(),
     );
   }
 }

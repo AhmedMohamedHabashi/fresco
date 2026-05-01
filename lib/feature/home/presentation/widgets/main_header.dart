@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fresco/config/routes/app_routes.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/core/utils/text_style/app_text_style.dart';
+import 'package:go_router/go_router.dart';
 
 class MainHeader extends StatelessWidget {
   const MainHeader({super.key});
@@ -32,7 +34,9 @@ class MainHeader extends StatelessWidget {
                 size: 30.sp,
                 color: AppColors.white,
               ),
-              onPressed: () {},
+              onPressed: () {
+                context.push(AppRoutes.cartView);
+              },
             ),
             Positioned(
               right: -1.w,

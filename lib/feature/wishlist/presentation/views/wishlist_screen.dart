@@ -34,7 +34,6 @@ class WishlistScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: const CustomNavigationBar(),
     );
   }
 }

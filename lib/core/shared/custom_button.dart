@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fresco/config/routes/app_routes.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/core/utils/text_style/app_text_style.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginButton extends StatelessWidget {
   const LoginButton({super.key, this.buttonText});
@@ -14,7 +16,9 @@ class LoginButton extends StatelessWidget {
         Container(
           margin: EdgeInsets.symmetric(horizontal: 16.w),
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              context.go(AppRoutes.homeView);
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.white,
               minimumSize: Size(double.infinity, 55.h),

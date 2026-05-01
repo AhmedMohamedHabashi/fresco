@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
+import 'package:fresco/core/utils/text_style/app_text_style.dart';
+import 'package:go_router/go_router.dart';
 
 class CartAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -13,34 +16,33 @@ class CartAppbar extends StatelessWidget implements PreferredSizeWidget {
 
       leading: IconButton(
         onPressed: () {
-          Navigator.pop(context);
+          context.pop();
         },
-        icon: const Icon(
-          Icons.arrow_back,
-          color: AppColors.mainColor,
-          size: 27,
-        ),
+        icon: Icon(Icons.arrow_back, color: AppColors.mainColor, size: 27.sp),
       ),
 
       title: Center(
         child: Text(
           title,
-          style: TextStyle(color: AppColors.mainColor, fontSize: 22),
+          style: AppTextStyle.bodyText22.copyWith(
+            color: AppColors.mainColor,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
 
       actions: [
         IconButton(
           onPressed: () {},
-          icon: const Icon(Icons.search, color: AppColors.mainColor, size: 30),
+          icon: Icon(Icons.search, color: AppColors.mainColor, size: 30.sp),
         ),
 
         IconButton(
           onPressed: () {},
-          icon: const Icon(
+          icon: Icon(
             Icons.shopping_cart_outlined,
             color: AppColors.mainColor,
-            size: 27,
+            size: 27.sp,
           ),
         ),
       ],

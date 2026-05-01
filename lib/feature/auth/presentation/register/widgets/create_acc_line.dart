@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fresco/config/routes/app_routes.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
-import 'package:fresco/feature/auth/presentation/register/views/signup_view.dart';
+import 'package:go_router/go_router.dart';
 
 class CreateAccountLine extends StatelessWidget {
   const CreateAccountLine({super.key});
@@ -26,17 +27,13 @@ class CreateAccountLine extends StatelessWidget {
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const SignUpView()),
-            );
+            context.push(AppRoutes.signUpView);
           },
           child: Text(
             'Create Account',
             style: TextStyle(
               decoration: TextDecoration.underline,
               decorationThickness: 1.h,
-
               decorationColor: AppColors.white,
               color: AppColors.white,
               fontSize: 14.sp,
