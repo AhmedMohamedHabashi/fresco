@@ -4,13 +4,26 @@ import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/core/utils/text_style/app_text_style.dart';
 
 class CheckoutSection extends StatelessWidget {
-  const CheckoutSection({super.key});
+  final String text;
+  final String price;
+  final bool isIconFirst;
+  final IconData icon;
+
+  const CheckoutSection({
+    super.key,
+    required this.text,
+    required this.price,
+    required this.isIconFirst,
+    required this.icon,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 60.h),
       child: Row(
         children: [
+          // Price
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
