@@ -11,7 +11,7 @@ class AssetsHelper {
     'assets/images/HomeList.jpg',
     'assets/images/HomeList_1.jpg',
     'assets/images/HomeList_2.jpg',
-    'assets/images/cart_home_9.jpg',
+    'assets/images/cart_home99.jpg',
     'assets/images/cart_home_5.jpg',
   ];
   // static const List<Map<String, String>> categoriesMan = [
