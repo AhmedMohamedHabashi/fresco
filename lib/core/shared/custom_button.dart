@@ -3,9 +3,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/core/utils/text_style/app_text_style.dart';
 
-class LoginButton extends StatelessWidget {
-  const LoginButton({super.key, this.buttonText, this.onTap});
+class CustomButton extends StatelessWidget {
+  const CustomButton({
+    super.key,
+    this.buttonText,
+    this.onTap,
+    this.color = AppColors.white,
+    this.textColor = AppColors.primaryColor,
+  });
   final String? buttonText;
+  final Color? color;
+  final Color? textColor;
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
@@ -16,7 +24,7 @@ class LoginButton extends StatelessWidget {
           child: ElevatedButton(
             onPressed: onTap,
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.white,
+              backgroundColor: color,
               minimumSize: Size(double.infinity, 55.h),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12.r),
@@ -25,7 +33,7 @@ class LoginButton extends StatelessWidget {
             child: Text(
               buttonText ?? 'Login',
               style: AppTextStyle.bodyText16.copyWith(
-                color: AppColors.primaryColor,
+                color: textColor,
                 fontWeight: FontWeight.bold,
               ),
             ),

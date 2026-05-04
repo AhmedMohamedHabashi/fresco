@@ -55,7 +55,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               ),
               (state is AuthLoading)
                   ? const CircularProgressIndicator(color: AppColors.white)
-                  : LoginButton(
+                  : CustomButton(
                       buttonText: 'Login',
                       onTap: () {
                         if (emailController.text.isEmpty ||
