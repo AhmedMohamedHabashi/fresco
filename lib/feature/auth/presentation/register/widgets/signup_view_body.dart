@@ -72,7 +72,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
 
                 child: (state is AuthLoading)
                     ? const CircularProgressIndicator()
-                    : LoginButton(
+                    : CustomButton(
                         buttonText: 'Sign Up',
                         onTap: () {
                           if (emailController.text.isEmpty ||
