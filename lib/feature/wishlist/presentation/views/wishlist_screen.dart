@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fresco/core/shared/custom_app_bar.dart';
-import 'package:fresco/core/shared/custom_navigation_bar.dart';
 import 'package:fresco/feature/wishlist/presentation/widgets/cart_item.dart';
 
 class WishlistScreen extends StatelessWidget {

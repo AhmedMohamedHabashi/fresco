@@ -7,5 +7,5 @@ class AppRoutes {
   static const String productDetailsView = '/productDetails';
   static const String accountView = '/account';
   static const String wishlistView = '/wishlist';
-  static const String productsView = '/products';
+  static const String productsView = '/ProductList';
 }

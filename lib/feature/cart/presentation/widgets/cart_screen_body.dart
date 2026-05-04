@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fresco/core/utils/assets_helper/assets_helper.dart';
-import 'package:fresco/feature/cart/presentation/widgets/checkout_section.dart';
 import 'package:fresco/feature/wishlist/presentation/widgets/cart_item.dart';
 
 class CartScreenBody extends StatelessWidget {
@@ -27,7 +26,6 @@ class CartScreenBody extends StatelessWidget {
             },
           ),
         ),
-        const CheckoutSection(),
       ],
     );
   }

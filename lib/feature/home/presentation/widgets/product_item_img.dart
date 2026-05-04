@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fresco/core/utils/assets_helper/assets_helper.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 
 class ProductItemImage extends StatelessWidget {
   const ProductItemImage({
     super.key,
+    required this.image,
     required this.isFavorite,
-    required this.onTapFavorite,
+    this.onTapFavorite,
   });
 
+  final String image;
   final bool isFavorite;
   final void Function()? onTapFavorite;
 
@@ -18,7 +19,7 @@ class ProductItemImage extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: 110.h,
+          height: 100.h,
           decoration: BoxDecoration(
             color: AppColors.white,
             borderRadius: BorderRadius.circular(15.r),
@@ -26,7 +27,7 @@ class ProductItemImage extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(15.r),
             child: Image.asset(
-              AssetsHelper.productImg2,
+              image, // 👈 بدل الثابت
               width: double.infinity,
               fit: BoxFit.fitWidth,
             ),
@@ -42,15 +43,12 @@ class ProductItemImage extends StatelessWidget {
               color: AppColors.white,
               borderRadius: BorderRadius.circular(15.r),
             ),
-
             child: Center(
               child: IconButton(
                 padding: EdgeInsets.zero,
                 icon: Icon(
                   isFavorite ? Icons.favorite : Icons.favorite_border,
-                  color: isFavorite
-                      ? AppColors.primaryColor
-                      : AppColors.primaryColor,
+                  color: AppColors.primaryColor,
                 ),
                 onPressed: onTapFavorite,
               ),
