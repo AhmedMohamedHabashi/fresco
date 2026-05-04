@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
-import 'package:fresco/core/utils/listes_helper/listes_helper.dart';
+import 'package:fresco/feature/category/data/model/listes_helper.dart';
 import 'package:fresco/feature/category/presentation/widgets/category_layout.dart';
 
 class DashboardCategories extends StatelessWidget {

@@ -1,5 +1,6 @@
 class AssetsHelper {
   static const String logo = 'assets/images/Logo_1.png';
+  static const String splash = 'assets/images/splash.jpg';
   static const String addToCart = 'assets/images/add_button.png';
   static const String productImg = 'assets/images/cart_home_1.jpg';
   static const String productImg2 = 'assets/images/cart_home_6.jpg';
@@ -10,8 +11,8 @@ class AssetsHelper {
     'assets/images/HomeList.jpg',
     'assets/images/HomeList_1.jpg',
     'assets/images/HomeList_2.jpg',
+    'assets/images/cart_home_9.jpg',
     'assets/images/cart_home_5.jpg',
-    'assets/images/Man/T_shirts.jpg',
   ];
   // static const List<Map<String, String>> categoriesMan = [
   //   {'image': 'assets/images/Man/men.jpg', 'title': 'Men’s Fashion'},

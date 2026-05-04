@@ -1,3 +1,4 @@
+import 'package:fresco/feature/account/presentation/views/account_view.dart';
 import 'package:fresco/feature/auth/presentation/login/views/login_view.dart';
 import 'package:fresco/feature/auth/presentation/register/views/signup_view.dart';
 import 'package:fresco/feature/cart/presentation/views/cart_screen.dart';
@@ -46,8 +47,8 @@ final GoRouter router = GoRouter(
         StatefulShellBranch(
           routes: [
             GoRoute(
-              path: AppRoutes.cartView,
-              builder: (context, state) => const CartScreen(),
+              path: AppRoutes.accountView,
+              builder: (context, state) => const AccountView(),
             ),
           ],
         ),
@@ -56,6 +57,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: AppRoutes.signUpView,
       builder: (context, state) => const SignUpView(),
+    ),
+    GoRoute(
+      path: AppRoutes.cartView,
+      builder: (context, state) => const CartScreen(),
     ),
   ],
 );

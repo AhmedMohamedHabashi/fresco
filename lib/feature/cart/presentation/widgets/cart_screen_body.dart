@@ -18,11 +18,11 @@ class CartScreenBody extends StatelessWidget {
                 title: 'Nike Air Jordan',
                 image: AssetsHelper.productImg3,
                 color: 'Orange',
-                price: 'EGP 3500',
+                price: 'EGP 3,500',
                 size: '40',
                 isCart: true,
                 quantity: 0,
-                oldPrice: '3600',
+                oldPrice: '3,600',
               );
             },
           ),

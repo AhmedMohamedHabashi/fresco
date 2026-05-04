@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fresco/core/utils/models/category_model.dart';
+import 'package:fresco/feature/category/data/model/category_model.dart';
 import 'package:fresco/feature/category/presentation/widgets/caregory_grid.dart';
 import 'package:fresco/feature/category/presentation/widgets/dashboard_categories.dart';
 import 'package:fresco/feature/category/presentation/widgets/section_header.dart';

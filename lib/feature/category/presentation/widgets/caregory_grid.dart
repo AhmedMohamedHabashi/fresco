@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
-import 'package:fresco/core/utils/models/category_model.dart';
+import 'package:fresco/feature/category/data/model/category_model.dart';
 import 'package:fresco/core/utils/text_style/app_text_style.dart';
 
 class CategoryGrid extends StatelessWidget {

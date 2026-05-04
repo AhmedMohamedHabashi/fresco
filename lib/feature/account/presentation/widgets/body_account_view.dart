@@ -1,0 +1,109 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fresco/core/utils/colors/app_colors.dart';
+import 'package:fresco/feature/account/presentation/widgets/account_header.dart';
+import 'package:fresco/feature/account/presentation/widgets/account_section_title.dart';
+import 'package:fresco/feature/account/presentation/widgets/account_text_field.dart';
+import 'package:fresco/feature/auth/presentation/login/widgets/welcome_widget.dart';
+
+class BodyAccountView extends StatefulWidget {
+  const BodyAccountView({super.key});
+
+  @override
+  State<BodyAccountView> createState() => _BodyAccountViewState();
+}
+
+class _BodyAccountViewState extends State<BodyAccountView> {
+  final Map<String, bool> _isEditing = {
+    'name': false,
+    'email': false,
+    'password': false,
+    'phone': false,
+    'address': false,
+  };
+
+  void toggleEdit(String field) {
+    setState(() {
+      _isEditing[field] = !(_isEditing[field] ?? false);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const AccountAppBar(),
+        const WelcomeWidget(
+          title: 'Welcome Back, Test',
+          subtitle: 'Test@gmail.com',
+          hotizontalPadding: false,
+          colorText: true,
+        ),
+
+        SizedBox(height: 10.h),
+
+        const AccountSectionTitle(
+          title: 'Your full name',
+          color: AppColors.primaryColor,
+        ),
+
+        AccountTextField(
+          value: 'Test',
+          isEditing: _isEditing['name']!,
+          onPressed: () => toggleEdit('name'),
+          color: AppColors.primaryColor,
+        ),
+
+        const AccountSectionTitle(
+          title: 'Your E-mail',
+          color: AppColors.primaryColor,
+        ),
+
+        AccountTextField(
+          value: 'test@gmail.com',
+          isEditing: _isEditing['email']!,
+          onPressed: () => toggleEdit('email'),
+          color: AppColors.primaryColor,
+        ),
+
+        const AccountSectionTitle(
+          title: 'Your password',
+          color: AppColors.primaryColor,
+        ),
+
+        AccountTextField(
+          value: '******',
+          isEditing: _isEditing['password']!,
+          onPressed: () => toggleEdit('password'),
+          color: AppColors.primaryColor,
+        ),
+
+        const AccountSectionTitle(
+          title: 'Your mobile number',
+          color: AppColors.primaryColor,
+        ),
+
+        AccountTextField(
+          value: '0123456789',
+          isEditing: _isEditing['phone']!,
+          onPressed: () => toggleEdit('phone'),
+          color: AppColors.primaryColor,
+        ),
+
+        const AccountSectionTitle(
+          title: 'Your Address',
+          color: AppColors.primaryColor,
+        ),
+
+        AccountTextField(
+          value: 'Alexandria',
+          isEditing: _isEditing['address']!,
+          onPressed: () => toggleEdit('address'),
+          color: AppColors.primaryColor,
+        ),
+      ],
+    );
+  }
+}

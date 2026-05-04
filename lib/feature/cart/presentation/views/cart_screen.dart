@@ -9,7 +9,7 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: CartAppbar(title: 'Cart'),
-      body: CartScreenBody(),
+      body: const CartScreenBody(),
     );
   }
 }

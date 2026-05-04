@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 
 class ItemDetails extends StatelessWidget {
@@ -36,18 +37,18 @@ class ItemDetails extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 3),
+        SizedBox(height: 3.h),
         Row(
           children: [
             Container(
-              width: 12,
-              height: 12,
+              width: 12.w,
+              height: 12.h,
               decoration: const BoxDecoration(
                 color: Color(0xFFBC3018),
                 shape: BoxShape.circle,
               ),
             ),
-            const SizedBox(width: 5),
+            SizedBox(width: 5.w),
             Text(
               isCart ? "$color | Size: $size" : color,
               style: const TextStyle(
