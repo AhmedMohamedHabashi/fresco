@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fresco/core/shared/add_to_cart.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
+import 'package:fresco/core/utils/text_style/app_text_style.dart';
 import 'quantity_selector.dart';
-import '../../../../core/shared/add_to_cart.dart';
+// import '../../../../core/shared/add_to_cart.dart';
 
 class ItemActions extends StatelessWidget {
   final String price, oldPrice;
@@ -25,18 +27,16 @@ class ItemActions extends StatelessWidget {
           children: [
             Text(
               price,
-              style: const TextStyle(
+              style: AppTextStyle.bodyText16.copyWith(
                 color: AppColors.mainColor,
                 fontWeight: FontWeight.bold,
-                fontSize: 18,
               ),
             ),
             if (!isCart)
               Text(
                 oldPrice,
-                style: const TextStyle(
-                  color: Colors.grey,
-                  fontSize: 14,
+                style: AppTextStyle.bodyText14.copyWith(
+                  color: AppColors.mediumGrey,
                   decoration: TextDecoration.lineThrough,
                 ),
               ),

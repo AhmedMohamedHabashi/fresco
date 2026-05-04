@@ -14,10 +14,8 @@ class MainLayout extends StatelessWidget {
     return Scaffold(
       body: Stack(children: [navigationShell]),
       bottomNavigationBar: CustomNavigationBar(
-        onTapHome: () => onTap(0),
-        onTapCategory: () => onTap(1),
-        onTapFavorite: () => onTap(2),
-        onTapProfile: () => onTap(3),
+        currentIndex: navigationShell.currentIndex,
+        onTap: onTap,
       ),
     );
   }

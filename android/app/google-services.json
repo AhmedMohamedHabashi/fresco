@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "292517833548",
+    "project_id": "fresco-app-4578b",
+    "storage_bucket": "fresco-app-4578b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292517833548:android:73714d05f70c8c03d3bde9",
+        "android_client_info": {
+          "package_name": "com.devVision.fresco"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4nBzqD4KVTpocwNnavwd-oE5zuUEE2dk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

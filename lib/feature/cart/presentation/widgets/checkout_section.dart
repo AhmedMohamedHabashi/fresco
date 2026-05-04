@@ -20,7 +20,7 @@ class CheckoutSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 60),
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 60.h),
       child: Row(
         children: [
           // Price
@@ -29,27 +29,24 @@ class CheckoutSection extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                "Total price",
-                style: TextStyle(
-                  fontSize: 16,
-                  color: AppColors.mainColor.withOpacity(0.6),
+                "Total price:",
+                style: AppTextStyle.bodyText16.copyWith(
+                  color: AppColors.mainColor.withOpacity(0.75),
                 ),
               ),
+
               SizedBox(height: 4.h),
               Text(
-                price,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+                "EGP 10,500",
+                style: AppTextStyle.bodyText20.copyWith(
                   color: AppColors.mainColor,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ],
           ),
-
           SizedBox(width: 30.w),
-
-          // Button
+          // Check Out Button
           Expanded(
             child: Container(
               height: 55.h,
@@ -59,27 +56,20 @@ class CheckoutSection extends StatelessWidget {
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: isIconFirst
-                    ? [
-                        Icon(icon, color: AppColors.white, size: 20.sp),
-                        SizedBox(width: 15.w),
-                        Text(
-                          text,
-                          style: AppTextStyle.bodyText18.copyWith(
-                            color: AppColors.white,
-                          ),
-                        ),
-                      ]
-                    : [
-                        Text(
-                          text,
-                          style: AppTextStyle.bodyText18.copyWith(
-                            color: AppColors.white,
-                          ),
-                        ),
-                        SizedBox(width: 15.w),
-                        Icon(icon, color: AppColors.white, size: 20.sp),
-                      ],
+                children: [
+                  Text(
+                    "Check Out",
+                    style: AppTextStyle.bodyText18.copyWith(
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  SizedBox(width: 15.w),
+                  Icon(
+                    Icons.arrow_forward,
+                    color: AppColors.white,
+                    size: 20.sp,
+                  ),
+                ],
               ),
             ),
           ),

@@ -8,8 +8,7 @@ class CustomSearch extends StatelessWidget {
 
   final Color? borderColor;
   final double? borderWidth;
-  final bool showBorder;
-  final bool showShadow;
+  final bool showBorder, showShadow;
 
   const CustomSearch({
     super.key,

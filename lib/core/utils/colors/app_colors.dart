@@ -11,6 +11,7 @@ class AppColors {
   static const Color textColor = Color(0xFF06004F);
   static const Color descriptionColor = Color(0x9906004F);
   static const Color mainColor = Color(0xFF004182);
+  static const Color errColor = Color(0xFFFF0000);
   static const Color red = Color(0xFFBC3018);
   static const Color green = Color(0xFF02B935);
   static const Color CoralRed = Color(0xFFFF645A);

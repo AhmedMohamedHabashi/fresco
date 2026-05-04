@@ -1,4 +1,4 @@
-package com.example.fresco
+package com.devVision.fresco
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -6,16 +6,17 @@ import 'package:fresco/core/utils/text_style/app_text_style.dart';
 class CustomTextField extends StatefulWidget {
   const CustomTextField({
     super.key,
-    this.title = 'Username',
-    this.hintText = 'Enter your name',
+    this.title = 'E-mail',
+    this.hintText = 'Enter your email',
     this.obscureText = false,
     this.forgotPassword = false,
+    required this.controller,
   });
 
   final String title;
   final String hintText;
-  final bool obscureText;
-  final bool forgotPassword;
+  final bool obscureText, forgotPassword;
+  final TextEditingController controller;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -43,8 +44,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
               fontWeight: FontWeight.w500,
             ),
           ),
-          SizedBox(height: 10.h),
+          SizedBox(height: 7.h),
           TextField(
+            controller: widget.controller,
             obscureText: isObscure,
             cursorColor: AppColors.primaryColor,
             style: AppTextStyle.bodyText16.copyWith(

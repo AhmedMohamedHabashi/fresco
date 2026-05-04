@@ -52,7 +52,7 @@ class HomeHeader extends StatelessWidget {
                   ],
                 ),
               ),
-              ListItem(),
+              CategoriesList(),
             ],
           ),
         ),

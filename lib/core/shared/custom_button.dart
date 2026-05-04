@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fresco/config/routes/app_routes.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/core/utils/text_style/app_text_style.dart';
-import 'package:go_router/go_router.dart';
 
 class LoginButton extends StatelessWidget {
-  const LoginButton({super.key, this.buttonText});
+  const LoginButton({super.key, this.buttonText, this.onTap});
   final String? buttonText;
-
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -16,9 +14,7 @@ class LoginButton extends StatelessWidget {
         Container(
           margin: EdgeInsets.symmetric(horizontal: 16.w),
           child: ElevatedButton(
-            onPressed: () {
-              context.go(AppRoutes.homeView);
-            },
+            onPressed: onTap,
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.white,
               minimumSize: Size(double.infinity, 55.h),
@@ -31,7 +27,6 @@ class LoginButton extends StatelessWidget {
               style: AppTextStyle.bodyText16.copyWith(
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.bold,
-                fontSize: 16.sp,
               ),
             ),
           ),
