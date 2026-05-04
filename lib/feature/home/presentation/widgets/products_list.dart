@@ -1,31 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/feature/home/presentation/widgets/product_item.dart';
+import 'package:fresco/feature/product_details/presentation/views/product_details_view.dart';
+import 'package:fresco/feature/product_list/data/models/list_model.dart';
 
 class ProductsList extends StatelessWidget {
   const ProductsList({super.key, required this.isFavorite, this.onTapFavorite});
 
   final bool isFavorite;
   final void Function()? onTapFavorite;
+
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      padding: EdgeInsets.symmetric(
-        horizontal: 12.w,
-        vertical: 12.h,
-      ), //  padding من كل الجهات
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
+      itemCount: ListModel.listphoto.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2, //  عمودين
-        mainAxisSpacing: 22, //  المسافة بين الصفوف
-        crossAxisSpacing: 22, //  المسافة بين الأعمدة
-        childAspectRatio: 0.75, //  نسبة الطول للعرض لكل عنصر
+        crossAxisCount: 2,
+        mainAxisSpacing: 22,
+        crossAxisSpacing: 22,
+        childAspectRatio: 0.74,
       ),
-      itemCount: 6,
-      itemBuilder: (context, index) =>
-          ProductItem(isFavorite: isFavorite, onTapFavorite: onTapFavorite),
-      // هنا بعرض العناصر اللي بتتكرر في القائمة، ممكن تغيرها حسب الحاجة بتاعت ال List view
+      itemBuilder: (context, index) {
+        final item = ListModel.listphoto[index];
+
+        return ProductItem(
+          isFavorite: isFavorite,
+          onTapFavorite: onTapFavorite,
+          image: item.image,
+          title: item.title,
+          subtitle: item.subtitle,
+          price: item.price,
+          rating: item.rating,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProductDetailsView(product: item),
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }
