@@ -17,11 +17,11 @@ class ProductsList extends StatelessWidget {
       shrinkWrap: true,
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
       itemCount: ListModel.listphoto.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        mainAxisSpacing: 22,
-        crossAxisSpacing: 22,
-        childAspectRatio: 0.74,
+        mainAxisSpacing: 22.h,
+        crossAxisSpacing: 22.w,
+        childAspectRatio: 0.75.h,
       ),
       itemBuilder: (context, index) {
         final item = ListModel.listphoto[index];
