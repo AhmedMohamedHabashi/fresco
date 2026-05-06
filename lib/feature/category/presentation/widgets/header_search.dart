@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fresco/config/routes/app_routes.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/core/shared/custom_search.dart';
+import 'package:go_router/go_router.dart';
 
 class HeaderSearch extends StatelessWidget {
   const HeaderSearch({super.key});
@@ -12,6 +14,10 @@ class HeaderSearch extends StatelessWidget {
       showBorder: true,
       borderColor: AppColors.primaryColor,
       borderWidth: 1.0,
+      readOnly: false,
+      onTap: () {
+        context.push(AppRoutes.searchView);
+      },
       showShadow: false,
     );
   }

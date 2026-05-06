@@ -57,7 +57,7 @@ class ProductDetails extends StatelessWidget {
             children: [
               Text(
                 price,
-                style: AppTextStyle.bodyText16.copyWith(
+                style: AppTextStyle.bodyText14.copyWith(
                   color: AppColors.black,
                   fontWeight: FontWeight.bold,
                 ),
@@ -73,14 +73,14 @@ class ProductDetails extends StatelessWidget {
               Icon(
                 Icons.star,
                 color: AppColors.yellow,
-                size: AppTextStyle.bodyText14
+                size: AppTextStyle.bodyText12
                     .copyWith(color: AppColors.black)
                     .fontSize,
               ),
               const Spacer(),
-              IconButton(
-                onPressed: () {},
-                icon: Image.asset(
+              GestureDetector(
+                onTap: () {},
+                child: Image.asset(
                   AssetsHelper.addToCart,
                   height: 32.h,
                   width: 32.w,
