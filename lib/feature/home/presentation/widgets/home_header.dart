@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fresco/config/routes/app_routes.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/feature/home/presentation/widgets/list_item.dart';
 import 'package:fresco/feature/home/presentation/widgets/main_header.dart';
 import 'package:fresco/feature/home/presentation/widgets/section_title.dart';
 import 'package:fresco/core/shared/custom_search.dart';
+import 'package:fresco/feature/search/presentation/views/search_view.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({super.key});
@@ -62,7 +65,13 @@ class HomeHeader extends StatelessWidget {
           bottom: -15.h,
           left: 35.w,
           right: 35.w,
-          child: CustomSearch(hintText: "Search in Store"),
+          child: CustomSearch(
+            hintText: "Search in Store",
+            readOnly: true,
+            onTap: () {
+              context.push(AppRoutes.searchView);
+            },
+          ),
         ),
       ],
     );

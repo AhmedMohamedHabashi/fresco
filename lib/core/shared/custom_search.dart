@@ -9,6 +9,8 @@ class CustomSearch extends StatelessWidget {
   final Color? borderColor;
   final double? borderWidth;
   final bool showBorder, showShadow;
+  final bool readOnly;
+  final VoidCallback? onTap;
 
   const CustomSearch({
     super.key,
@@ -17,6 +19,8 @@ class CustomSearch extends StatelessWidget {
     this.borderWidth,
     this.showBorder = false,
     this.showShadow = true,
+    this.readOnly = false,
+    this.onTap,
   });
 
   @override
@@ -38,6 +42,8 @@ class CustomSearch extends StatelessWidget {
             : [],
       ),
       child: TextField(
+        readOnly: readOnly,
+        onTap: onTap,
         cursorColor: AppColors.primaryColor,
         style: AppTextStyle.bodyText14.copyWith(color: AppColors.primaryColor),
         decoration: InputDecoration(

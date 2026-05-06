@@ -21,7 +21,7 @@ class ProductsList extends StatelessWidget {
         crossAxisCount: 2,
         mainAxisSpacing: 22.h,
         crossAxisSpacing: 22.w,
-        childAspectRatio: 0.75.h,
+        childAspectRatio: 0.77,
       ),
       itemBuilder: (context, index) {
         final item = ListModel.listphoto[index];
