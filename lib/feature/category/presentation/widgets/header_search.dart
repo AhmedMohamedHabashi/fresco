@@ -14,11 +14,11 @@ class HeaderSearch extends StatelessWidget {
       showBorder: true,
       borderColor: AppColors.primaryColor,
       borderWidth: 1.0,
-      readOnly: false,
+      readOnly: true,
+      showShadow: false,
       onTap: () {
         context.push(AppRoutes.searchView);
       },
-      showShadow: false,
     );
   }
 }
