@@ -38,7 +38,7 @@ class SectionTitle extends StatelessWidget {
           if (!isHeader)
             TextButton(
               onPressed: () {
-                context.go(AppRoutes.ProductList);
+                context.push(AppRoutes.ProductList);
               },
               child: Text(
                 "View All",
