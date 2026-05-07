@@ -11,6 +11,7 @@ import 'package:fresco/feature/auth/presentation/cubit/auth_cubit.dart';
 import 'package:fresco/feature/auth/presentation/cubit/auth_state.dart';
 import 'package:fresco/feature/auth/presentation/login/widgets/welcome_widget.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BodyAccountView extends StatefulWidget {
   const BodyAccountView({super.key});
@@ -37,8 +38,15 @@ class _BodyAccountViewState extends State<BodyAccountView> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is LogoutSuccess) {
+          final prefs = await SharedPreferences.getInstance();
+
+          await prefs.setBool('isLoggedIn', false);
+          await prefs.remove('name');
+          await prefs.remove('email');
+
+          if (!mounted) return;
           context.go(AppRoutes.signInView);
         }
         if (state is AuthError) {

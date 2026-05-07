@@ -1,6 +1,7 @@
 import 'package:fresco/feature/account/presentation/views/account_view.dart';
 import 'package:fresco/feature/auth/presentation/login/views/login_view.dart';
 import 'package:fresco/feature/auth/presentation/register/views/signup_view.dart';
+import 'package:fresco/feature/auth/presentation/splash/views/spash_view.dart';
 import 'package:fresco/feature/cart/presentation/views/cart_screen.dart';
 import 'package:fresco/feature/category/presentation/views/category_view.dart';
 import 'package:fresco/feature/home/presentation/views/home_view.dart';
@@ -14,8 +15,12 @@ import 'package:go_router/go_router.dart';
 import 'app_routes.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: AppRoutes.signInView,
+  initialLocation: AppRoutes.splashView,
   routes: [
+    GoRoute(
+      path: AppRoutes.splashView,
+      builder: (context, state) => const SplashView(),
+    ),
     GoRoute(
       path: AppRoutes.signInView,
       builder: (context, state) => const LoginView(),
