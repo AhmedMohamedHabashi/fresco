@@ -10,6 +10,7 @@ import 'package:fresco/feature/auth/presentation/cubit/auth_state.dart';
 import 'package:fresco/feature/auth/presentation/login/widgets/welcome_widget.dart';
 import 'package:fresco/feature/auth/presentation/register/widgets/create_acc_line.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginViewBody extends StatefulWidget {
   const LoginViewBody({super.key});
@@ -25,14 +26,22 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: BlocConsumer<AuthCubit, AuthState>(
-        listener: (context, state) {
+        listener: (context, state) async {
           if (state is AuthError) {
             ScaffoldMessenger.of(
               context,
             ).showSnackBar(SnackBar(content: Text(state.errMsg)));
           }
           if (state is LoginSuccess) {
-            context.push(AppRoutes.homeView);
+            final prefs = await SharedPreferences.getInstance();
+
+            await prefs.setBool('isLoggedIn', true);
+
+            await prefs.setString('email', emailController.text);
+
+            if (!mounted) return;
+
+            context.go(AppRoutes.homeView);
           }
         },
         builder: (context, state) {

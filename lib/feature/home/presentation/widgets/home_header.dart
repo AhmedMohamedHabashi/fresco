@@ -6,7 +6,6 @@ import 'package:fresco/feature/home/presentation/widgets/list_item.dart';
 import 'package:fresco/feature/home/presentation/widgets/main_header.dart';
 import 'package:fresco/feature/home/presentation/widgets/section_title.dart';
 import 'package:fresco/core/shared/custom_search.dart';
-import 'package:fresco/feature/search/presentation/views/search_view.dart';
 import 'package:go_router/go_router.dart';
 
 class HomeHeader extends StatelessWidget {

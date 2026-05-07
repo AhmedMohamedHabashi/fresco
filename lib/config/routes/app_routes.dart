@@ -1,5 +1,6 @@
 class AppRoutes {
-  static const String signInView = '/';
+  static const String splashView = '/';
+  static const String signInView = '/login';
   static const String signUpView = '/signUp';
   static const String homeView = '/home';
   static const String cartView = '/cart';
