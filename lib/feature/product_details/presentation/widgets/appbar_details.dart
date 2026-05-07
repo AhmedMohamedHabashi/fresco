@@ -9,54 +9,44 @@ class AppBarDetails extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: AppBar(
-        backgroundColor: AppColors.white,
-        elevation: 0,
-        centerTitle: true,
+    return AppBar(
+      backgroundColor: AppColors.white,
+      elevation: 0,
+      centerTitle: true,
 
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: AppColors.primaryColor,
-            fontWeight: FontWeight.bold,
-          ),
-          onPressed: () {
-            context.pop();
-          },
-        ),
-
-        title: Text(
-          "Product Details",
-          style: AppTextStyle.bodyText18.copyWith(
-            color: AppColors.mainColor,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-
-        actions: [
-          IconButton(
-            onPressed: () {
-              context.push(AppRoutes.searchView);
-            },
-            icon: const Icon(
-              Icons.search,
-              color: AppColors.primaryColor,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              context.push(AppRoutes.cartView);
-            },
-            icon: const Icon(
-              Icons.shopping_cart_outlined,
-              color: AppColors.primaryColor,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
+      leading: IconButton(
+        icon: const Icon(Icons.arrow_back, color: AppColors.primaryColor),
+        onPressed: () {
+          context.pop();
+        },
       ),
+
+      title: Text(
+        "Product Details",
+        style: AppTextStyle.bodyText18.copyWith(
+          color: AppColors.mainColor,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+
+      actions: [
+        IconButton(
+          onPressed: () {
+            context.push(AppRoutes.searchView);
+          },
+          icon: const Icon(Icons.search, color: AppColors.primaryColor),
+        ),
+
+        IconButton(
+          onPressed: () {
+            context.push(AppRoutes.cartView);
+          },
+          icon: const Icon(
+            Icons.shopping_cart_outlined,
+            color: AppColors.primaryColor,
+          ),
+        ),
+      ],
     );
   }
 

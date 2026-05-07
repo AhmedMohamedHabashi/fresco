@@ -34,17 +34,14 @@ class _ProductRatingAndCounterSectionState
   Widget build(BuildContext context) {
     return Row(
       children: [
-        /// Sold container
+        /// Sold
         Container(
           padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20.r),
             border: Border.all(color: AppColors.primaryColor),
           ),
-          child: Text(
-            "3.230 sold",
-            style: AppTextStyle.bodyText14.copyWith(color: AppColors.mainColor),
-          ),
+          child: const Text("3.230 sold"),
         ),
 
         SizedBox(width: 10.w),
@@ -52,7 +49,7 @@ class _ProductRatingAndCounterSectionState
         /// Rating
         Row(
           children: [
-            Icon(Icons.star, color: Colors.amber, size: 16.sp),
+            const Icon(Icons.star, color: Colors.amber),
             SizedBox(width: 4.w),
             Text(
               widget.product.rating,
@@ -65,6 +62,7 @@ class _ProductRatingAndCounterSectionState
 
         const Spacer(),
 
+        /// Counter
         Container(
           padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 6.h),
           decoration: BoxDecoration(
@@ -76,7 +74,7 @@ class _ProductRatingAndCounterSectionState
             children: [
               GestureDetector(
                 onTap: decrease,
-                child: _circleIcon(Icons.remove),
+                child: const _CircleIcon(icon: Icons.remove),
               ),
 
               SizedBox(width: 12.w),
@@ -91,16 +89,25 @@ class _ProductRatingAndCounterSectionState
 
               SizedBox(width: 12.w),
 
-              GestureDetector(onTap: increase, child: _circleIcon(Icons.add)),
+              GestureDetector(
+                onTap: increase,
+                child: const _CircleIcon(icon: Icons.add),
+              ),
             ],
           ),
         ),
       ],
     );
   }
+}
 
-  /// Reusable icon widget
-  Widget _circleIcon(IconData icon) {
+class _CircleIcon extends StatelessWidget {
+  final IconData icon;
+
+  const _CircleIcon({required this.icon});
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       width: 24.w,
       height: 24.w,

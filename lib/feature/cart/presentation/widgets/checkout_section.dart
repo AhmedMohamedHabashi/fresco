@@ -23,7 +23,6 @@ class CheckoutSection extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 60.h),
       child: Row(
         children: [
-          // Price
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
@@ -34,7 +33,6 @@ class CheckoutSection extends StatelessWidget {
                   color: AppColors.mainColor.withOpacity(0.75),
                 ),
               ),
-
               SizedBox(height: 4.h),
               Text(
                 price,
@@ -45,8 +43,9 @@ class CheckoutSection extends StatelessWidget {
               ),
             ],
           ),
+
           SizedBox(width: 30.w),
-          // Check Out Button
+
           Expanded(
             child: Container(
               height: 55.h,
@@ -56,20 +55,29 @@ class CheckoutSection extends StatelessWidget {
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Check Out",
-                    style: AppTextStyle.bodyText18.copyWith(
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  SizedBox(width: 15.w),
-                  Icon(
-                    Icons.arrow_forward,
-                    color: AppColors.white,
-                    size: 20.sp,
-                  ),
-                ],
+                children: isIconFirst
+                    ? [
+                        Icon(icon, color: Colors.white),
+                        SizedBox(width: 15.w),
+                        Text(
+                          text,
+                          style: AppTextStyle.bodyText18.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ]
+                    : [
+                        Text(
+                          text,
+                          style: AppTextStyle.bodyText18.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        SizedBox(width: 15.w),
+                        Icon(icon, color: Colors.white),
+                      ],
               ),
             ),
           ),

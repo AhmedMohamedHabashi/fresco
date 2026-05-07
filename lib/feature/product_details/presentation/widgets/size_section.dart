@@ -20,38 +20,46 @@ class SizeSection extends StatelessWidget {
         ),
         SizedBox(height: 8.h),
         Row(
-          children: [
-            _sizeText("38"),
-            _sizeText("39"),
-            _sizeSelected("40"),
-            _sizeText("41"),
-            _sizeText("42"),
+          children: const [
+            _SizeItem(text: "38"),
+            _SizeItem(text: "39"),
+            _SizeItem(text: "40", selected: true),
+            _SizeItem(text: "41"),
+            _SizeItem(text: "42"),
           ],
         ),
       ],
     );
   }
+}
 
-  Widget _sizeText(String text) {
+class _SizeItem extends StatelessWidget {
+  final String text;
+  final bool selected;
+
+  const _SizeItem({required this.text, this.selected = false});
+
+  @override
+  Widget build(BuildContext context) {
+    if (selected) {
+      return Padding(
+        padding: EdgeInsets.only(right: 20.w),
+        child: CircleAvatar(
+          radius: 18.r,
+          backgroundColor: AppColors.mainColor,
+          child: Text(
+            text,
+            style: AppTextStyle.bodyText14.copyWith(color: Colors.white),
+          ),
+        ),
+      );
+    }
+
     return Padding(
       padding: EdgeInsets.only(right: 20.w),
       child: Text(
         text,
         style: AppTextStyle.bodyText14.copyWith(color: AppColors.textColor),
-      ),
-    );
-  }
-
-  Widget _sizeSelected(String text) {
-    return Padding(
-      padding: EdgeInsets.only(right: 20.w),
-      child: CircleAvatar(
-        radius: 18.r,
-        backgroundColor: AppColors.mainColor, // اللون الأزرق بتاعك
-        child: Text(
-          text,
-          style: AppTextStyle.bodyText14.copyWith(color: Colors.white),
-        ),
       ),
     );
   }
