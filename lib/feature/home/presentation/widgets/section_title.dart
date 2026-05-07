@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/config/routes/app_routes.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/core/utils/text_style/app_text_style.dart';
-import 'package:fresco/feature/product_list/presentation/views/product_list.dart';
 import 'package:go_router/go_router.dart';
 
 class SectionTitle extends StatelessWidget {
@@ -39,7 +38,7 @@ class SectionTitle extends StatelessWidget {
           if (!isHeader)
             TextButton(
               onPressed: () {
-                context.go(AppRoutes.ProductList);
+                context.push(AppRoutes.ProductList);
               },
               child: Text(
                 "View All",
