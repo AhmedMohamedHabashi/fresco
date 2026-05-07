@@ -73,48 +73,9 @@ class _PhotoSectionState extends State<PhotoSection> {
                     ),
                   ),
                 ),
-
-                // indicators (لسه ثابتة عادي)
-                Positioned(
-                  bottom: 12.h,
-                  left: 0,
-                  right: 0,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: 25.w,
-                        height: 8.h,
-                        decoration: BoxDecoration(
-                          color: AppColors.primaryColor,
-                          borderRadius: BorderRadius.circular(10.r),
-                        ),
-                      ),
-                      SizedBox(width: 8.w),
-                      Container(
-                        width: 8.w,
-                        height: 8.h,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: AppColors.primaryColor),
-                        ),
-                      ),
-                      SizedBox(width: 8.w),
-                      Container(
-                        width: 8.w,
-                        height: 8.h,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: AppColors.primaryColor),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
               ],
             ),
           ),
-          SizedBox(height: 16.h),
         ],
       ),
     );

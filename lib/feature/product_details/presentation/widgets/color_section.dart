@@ -19,7 +19,7 @@ class ColorSection extends StatelessWidget {
           ),
         ),
 
-        SizedBox(height: 8.h),
+        SizedBox(height: 10.h),
 
         Row(
           children: [

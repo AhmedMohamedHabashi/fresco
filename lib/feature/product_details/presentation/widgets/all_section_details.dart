@@ -41,19 +41,19 @@ class _AllSectionDetailsState extends State<AllSectionDetails> {
 
           NamePriceSection(product: product),
 
-          SizedBox(height: 6.h),
+          SizedBox(height: 10.h),
 
           ProductRatingAndCounterSection(product: product),
 
-          SizedBox(height: 8.h),
+          SizedBox(height: 10.h),
 
           DescriptionSection(product: product),
 
-          SizedBox(height: 8.h),
+          SizedBox(height: 19.h),
 
           SizeSection(),
 
-          SizedBox(height: 8.h),
+          SizedBox(height: 10.h),
 
           ColorSection(),
         ],

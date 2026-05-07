@@ -37,7 +37,7 @@ class CheckoutSection extends StatelessWidget {
 
               SizedBox(height: 4.h),
               Text(
-                "EGP 10,500",
+                price,
                 style: AppTextStyle.bodyText20.copyWith(
                   color: AppColors.mainColor,
                   fontWeight: FontWeight.bold,
