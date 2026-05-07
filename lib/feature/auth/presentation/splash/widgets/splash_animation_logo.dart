@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fresco/config/routes/app_routes.dart';
 import 'package:fresco/feature/auth/presentation/splash/widgets/splash_background.dart';
+import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashAnimationLogo extends StatefulWidget {
   const SplashAnimationLogo({super.key});
@@ -33,6 +36,28 @@ class _SplashAnimationLogoState extends State<SplashAnimationLogo>
       begin: const Offset(0, 0.02),
       end: const Offset(0, -0.02),
     ).animate(_controller);
+
+    navigateToNext();
+  }
+
+  void navigateToNext() async {
+    await Future.delayed(const Duration(seconds: 3));
+
+    if (!mounted) return;
+
+    try {
+      final prefs = await SharedPreferences.getInstance();
+
+      final isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+
+      if (isLoggedIn) {
+        context.go(AppRoutes.homeView);
+      } else {
+        context.go(AppRoutes.signInView);
+      }
+    } catch (e) {
+      context.go(AppRoutes.signInView);
+    }
   }
 
   @override
