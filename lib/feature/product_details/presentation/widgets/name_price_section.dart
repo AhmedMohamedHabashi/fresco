@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/core/utils/text_style/app_text_style.dart';
-import 'package:fresco/feature/product_list/data/models/list_model.dart'; // 👈 (1)
+import 'package:fresco/feature/product_list/data/models/list_model.dart';
 
 class NamePriceSection extends StatelessWidget {
   final ListModel product;
@@ -17,9 +17,11 @@ class NamePriceSection extends StatelessWidget {
           child: Text(
             product.title,
             style: AppTextStyle.bodyText18.copyWith(color: AppColors.mainColor),
+            maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
         ),
+
         Text(
           product.price,
           style: AppTextStyle.bodyText18.copyWith(color: AppColors.mainColor),

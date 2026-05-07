@@ -21,13 +21,13 @@ class ColorSection extends StatelessWidget {
 
         SizedBox(height: 10.h),
 
-        Row(
-          children: [
-            _colorCircle(AppColors.black),
-            _colorCircle(AppColors.red, selected: true),
-            _colorCircle(AppColors.lightBlue),
-            _colorCircle(AppColors.green),
-            _colorCircle(AppColors.CoralRed),
+        Wrap(
+          children: const [
+            _ColorCircle(color: AppColors.black),
+            _ColorCircle(color: AppColors.red, selected: true),
+            _ColorCircle(color: AppColors.lightBlue),
+            _ColorCircle(color: AppColors.green),
+            _ColorCircle(color: AppColors.CoralRed),
           ],
         ),
       ],
@@ -35,15 +35,23 @@ class ColorSection extends StatelessWidget {
   }
 }
 
-Widget _colorCircle(Color color, {bool selected = false}) {
-  return Container(
-    margin: EdgeInsets.only(right: 20.w),
-    width: 30.w,
-    height: 30.h,
-    alignment: Alignment.center,
-    decoration: BoxDecoration(color: color, shape: BoxShape.circle),
-    child: selected
-        ? Icon(Icons.check, color: Colors.white, size: 16.sp)
-        : null,
-  );
+class _ColorCircle extends StatelessWidget {
+  final Color color;
+  final bool selected;
+
+  const _ColorCircle({required this.color, this.selected = false});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(right: 20.w),
+      width: 30.w,
+      height: 30.h,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+      child: selected
+          ? const Icon(Icons.check, color: Colors.white, size: 16)
+          : null,
+    );
+  }
 }

@@ -14,13 +14,7 @@ class DescriptionSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "Description",
-          style: AppTextStyle.bodyText18.copyWith(
-            color: AppColors.mainColor,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        const Text("Description"),
 
         SizedBox(height: 6.h),
 
