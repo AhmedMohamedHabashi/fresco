@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fresco/config/routes/app_routes.dart';
 import 'package:fresco/feature/home/presentation/widgets/product_item.dart';
 import 'package:fresco/feature/product_details/presentation/views/product_details_view.dart';
 import 'package:fresco/feature/product_list/data/models/list_model.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductsList extends StatelessWidget {
   const ProductsList({super.key, required this.isFavorite, this.onTapFavorite});
@@ -35,12 +37,7 @@ class ProductsList extends StatelessWidget {
           price: item.price,
           rating: item.rating,
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ProductDetailsView(product: item),
-              ),
-            );
+            context.push(AppRoutes.productDetailsView, extra: item);
           },
         );
       },

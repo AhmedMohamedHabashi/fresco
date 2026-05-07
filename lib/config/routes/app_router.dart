@@ -5,6 +5,9 @@ import 'package:fresco/feature/cart/presentation/views/cart_screen.dart';
 import 'package:fresco/feature/category/presentation/views/category_view.dart';
 import 'package:fresco/feature/home/presentation/views/home_view.dart';
 import 'package:fresco/feature/layout/presentation/views/main_layout.dart';
+import 'package:fresco/feature/product_details/presentation/views/product_details_view.dart';
+import 'package:fresco/feature/product_list/data/models/list_model.dart';
+import 'package:fresco/feature/product_list/presentation/views/product_list.dart';
 import 'package:fresco/feature/search/presentation/views/search_view.dart';
 import 'package:fresco/feature/wishlist/presentation/views/wishlist_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -66,6 +69,18 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: AppRoutes.searchView,
       builder: (context, state) => const SearchView(),
+    ),
+    GoRoute(
+      path: AppRoutes.ProductList,
+      builder: (context, state) => const ProductList(),
+    ),
+    GoRoute(
+      path: AppRoutes.productDetailsView,
+      builder: (context, state) {
+        final product = state.extra as ListModel;
+
+        return ProductDetailsView(product: product);
+      },
     ),
   ],
 );

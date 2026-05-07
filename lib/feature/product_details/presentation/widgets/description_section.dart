@@ -25,7 +25,7 @@ class DescriptionSection extends StatelessWidget {
         SizedBox(height: 6.h),
 
         Text(
-          product.subtitle, // 👈 استخدمنا subtitle كـ description
+          product.subtitle,
           style: AppTextStyle.bodyText14.copyWith(
             color: AppColors.mainColor.withOpacity(0.7),
           ),
