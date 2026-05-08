@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:fresco/core/utils/assets_helper/assets_helper.dart';
+import 'package:fresco/feature/product_list/data/models/list_model.dart';
 import 'package:fresco/feature/wishlist/presentation/widgets/cart_item.dart';
 
 class CartScreenBody extends StatelessWidget {
-  const CartScreenBody({super.key});
+  final ListModel product;
+  const CartScreenBody({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -11,17 +12,17 @@ class CartScreenBody extends StatelessWidget {
       children: [
         Expanded(
           child: ListView.builder(
-            itemCount: 3,
+            itemCount: 1,
             itemBuilder: (context, index) {
               return CartItem(
-                title: 'Nike Air Jordan',
-                image: AssetsHelper.productImg3,
+                title: product.title,
+                image: product.image,
                 color: 'Orange',
-                price: 'EGP 3,500',
                 size: '40',
+                price: product.price,
                 isCart: true,
-                quantity: 0,
-                oldPrice: '3,600',
+                quantity: 1,
+                oldPrice: '',
               );
             },
           ),

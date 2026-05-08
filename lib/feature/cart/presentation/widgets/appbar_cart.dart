@@ -36,15 +36,6 @@ class CartAppbar extends StatelessWidget implements PreferredSizeWidget {
           onPressed: () {},
           icon: Icon(Icons.search, color: AppColors.mainColor, size: 30.sp),
         ),
-
-        IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Icons.shopping_cart_outlined,
-            color: AppColors.mainColor,
-            size: 27.sp,
-          ),
-        ),
       ],
     );
   }

@@ -2,18 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:fresco/feature/cart/presentation/widgets/appbar_cart.dart';
 import 'package:fresco/feature/cart/presentation/widgets/cart_screen_body.dart';
 import 'package:fresco/feature/cart/presentation/widgets/checkout_section.dart';
+import 'package:fresco/feature/product_list/data/models/list_model.dart';
 
 class CartScreen extends StatelessWidget {
-  const CartScreen({super.key});
+  final ListModel addedProduct;
+
+  const CartScreen({super.key, required this.addedProduct});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: CartAppbar(title: 'Cart'),
-      body: CartScreenBody(),
+      body: CartScreenBody(product: addedProduct),
       bottomNavigationBar: CheckoutSection(
+        product: addedProduct,
         isIconFirst: false,
-        price: "EGP 3,500",
+        price: addedProduct.price,
         text: "Check Out",
         icon: Icons.arrow_forward,
       ),
