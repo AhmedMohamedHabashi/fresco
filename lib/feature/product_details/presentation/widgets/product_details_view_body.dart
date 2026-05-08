@@ -28,6 +28,7 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
             AllSectionDetails(product: widget.product),
 
             CheckoutSection(
+              product: widget.product,
               price: widget.product.price,
               text: "Add to cart",
               isIconFirst: true,
