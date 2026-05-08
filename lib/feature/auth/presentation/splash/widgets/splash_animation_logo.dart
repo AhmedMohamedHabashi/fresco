@@ -56,6 +56,7 @@ class _SplashAnimationLogoState extends State<SplashAnimationLogo>
         context.go(AppRoutes.signInView);
       }
     } catch (e) {
+      debugPrint(e.toString());
       context.go(AppRoutes.signInView);
     }
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/feature/cart/presentation/widgets/appbar_cart.dart';
 import 'package:fresco/feature/cart/presentation/widgets/cart_screen_body.dart';
 import 'package:fresco/feature/cart/presentation/widgets/checkout_section.dart';
@@ -12,7 +13,7 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.white,
       appBar: CartAppbar(title: 'Cart'),
       body: CartScreenBody(product: addedProduct),
       bottomNavigationBar: CheckoutSection(
