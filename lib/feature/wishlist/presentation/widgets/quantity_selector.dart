@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 
-class QuantitySelector extends StatelessWidget {
+class QuantitySelector extends StatefulWidget {
   const QuantitySelector({super.key});
+
+  @override
+  State<QuantitySelector> createState() => _QuantitySelectorState();
+}
+
+class _QuantitySelectorState extends State<QuantitySelector> {
+  int quantity = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +21,16 @@ class QuantitySelector extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
+          // زرار الناقص (-)
           GestureDetector(
             onTap: () {
-              // TODO: Add Decrease Logic
+              setState(() {
+                if (quantity > 1) {
+                  quantity--;
+                }
+              });
             },
             child: const Icon(
               Icons.remove_circle_outline,
@@ -25,15 +38,25 @@ class QuantitySelector extends StatelessWidget {
               size: 20,
             ),
           ),
-          const SizedBox(width: 10),
-          const Text(
-            "1",
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          const SizedBox(width: 15),
+
+          Text(
+            "$quantity",
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
           ),
-          const SizedBox(width: 10),
+
+          const SizedBox(width: 15),
+
+          // زرار الزائد (+)
           GestureDetector(
             onTap: () {
-              // TODO: Add Increase Logic
+              setState(() {
+                quantity++;
+              });
             },
             child: const Icon(
               Icons.add_circle_outline,

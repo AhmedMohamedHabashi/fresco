@@ -69,7 +69,10 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: AppRoutes.cartView,
-      builder: (context, state) => const CartScreen(),
+      builder: (context, state) {
+        final product = state.extra as ListModel? ?? ListModel.listphoto[0];
+        return CartScreen(addedProduct: product);
+      },
     ),
     GoRoute(
       path: AppRoutes.searchView,
