@@ -68,22 +68,12 @@ class CheckoutSection extends StatelessWidget {
                       ? [
                           Icon(icon, color: Colors.white),
                           SizedBox(width: 15.w),
-                          Text(
-                            text,
-                            style: AppTextStyle.bodyText18.copyWith(
-                              color: Colors.white,
-                            ),
-                          ),
+                          Text(text, style: AppTextStyle.bodyText18),
                         ]
                       : [
-                          Text(
-                            text,
-                            style: AppTextStyle.bodyText18.copyWith(
-                              color: Colors.white,
-                            ),
-                          ),
+                          Text(text, style: AppTextStyle.bodyText18),
                           SizedBox(width: 15.w),
-                          Icon(icon, color: Colors.white),
+                          Icon(icon, color: AppColors.white),
                         ],
                 ),
               ),

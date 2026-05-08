@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
+import 'package:fresco/core/utils/text_style/app_text_style.dart';
 
 class QuantitySelector extends StatefulWidget {
   const QuantitySelector({super.key});
@@ -14,11 +16,11 @@ class _QuantitySelectorState extends State<QuantitySelector> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 36,
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+      height: 36.h,
+      padding: EdgeInsets.symmetric(horizontal: 15.w),
       decoration: BoxDecoration(
         color: AppColors.mainColor,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(20.r),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -32,24 +34,22 @@ class _QuantitySelectorState extends State<QuantitySelector> {
                 }
               });
             },
-            child: const Icon(
+            child: Icon(
               Icons.remove_circle_outline,
-              color: Colors.white,
-              size: 20,
+              color: AppColors.white,
+              size: 20.sp,
             ),
           ),
-          const SizedBox(width: 15),
+          SizedBox(width: 15.w),
 
           Text(
             "$quantity",
-            style: const TextStyle(
-              color: Colors.white,
+            style: AppTextStyle.bodyText16.copyWith(
               fontWeight: FontWeight.bold,
-              fontSize: 16,
             ),
           ),
 
-          const SizedBox(width: 15),
+          SizedBox(width: 15.w),
 
           // زرار الزائد (+)
           GestureDetector(
@@ -58,10 +58,10 @@ class _QuantitySelectorState extends State<QuantitySelector> {
                 quantity++;
               });
             },
-            child: const Icon(
+            child: Icon(
               Icons.add_circle_outline,
-              color: Colors.white,
-              size: 20,
+              color: AppColors.white,
+              size: 20.sp,
             ),
           ),
         ],
