@@ -22,20 +22,15 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: const AppBarDetails(),
+      bottomNavigationBar: CheckoutSection(
+        product: widget.product,
+        price: widget.product.price,
+        text: "Add to cart",
+        isIconFirst: true,
+        icon: Icons.add_shopping_cart_outlined,
+      ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            AllSectionDetails(product: widget.product),
-
-            CheckoutSection(
-              product: widget.product,
-              price: widget.product.price,
-              text: "Add to cart",
-              isIconFirst: true,
-              icon: Icons.add_shopping_cart_outlined,
-            ),
-          ],
-        ),
+        child: AllSectionDetails(product: widget.product),
       ),
     );
   }
