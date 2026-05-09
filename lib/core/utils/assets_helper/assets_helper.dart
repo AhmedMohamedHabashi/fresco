@@ -7,6 +7,8 @@ class AssetsHelper {
   static const String productImg3 = 'assets/images/cart_home_3.jpg';
   static const String productImg4 = 'assets/images/cart_home_4.jpg';
   static const String productImg5 = 'assets/images/cart_home_5.jpg';
+  static const String productImg10 = 'assets/images/cart_home_10.jpg';
+  static const String productImg11 = 'assets/images/cart_home_11.jpg';
   static const List<String> imagesList = [
     'assets/images/HomeList.jpg',
     'assets/images/HomeList_1.jpg',

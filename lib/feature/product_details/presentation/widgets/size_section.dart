@@ -3,11 +3,26 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/core/utils/text_style/app_text_style.dart';
 
-class SizeSection extends StatelessWidget {
-  const SizeSection({super.key});
+class SizeSection extends StatefulWidget {
+  final List<String>? sizes;
+
+  const SizeSection({super.key, this.sizes});
+
+  @override
+  State<SizeSection> createState() => _SizeSectionState();
+}
+
+class _SizeSectionState extends State<SizeSection> {
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    final sizes = widget.sizes;
+
+    if (sizes == null || sizes.isEmpty) {
+      return const SizedBox();
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -19,14 +34,22 @@ class SizeSection extends StatelessWidget {
           ),
         ),
         SizedBox(height: 8.h),
+
         Row(
-          children: const [
-            _SizeItem(text: "38"),
-            _SizeItem(text: "39"),
-            _SizeItem(text: "40", selected: true),
-            _SizeItem(text: "41"),
-            _SizeItem(text: "42"),
-          ],
+          children: List.generate(
+            sizes.length,
+            (index) => GestureDetector(
+              onTap: () {
+                setState(() {
+                  selectedIndex = index;
+                });
+              },
+              child: _SizeItem(
+                text: sizes[index],
+                selected: selectedIndex == index,
+              ),
+            ),
+          ),
         ),
       ],
     );

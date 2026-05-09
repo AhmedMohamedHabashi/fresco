@@ -20,13 +20,13 @@ class AddToCartButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(15.r),
           ),
         ),
-        child: const FittedBox(
+        child: FittedBox(
           fit: BoxFit.scaleDown,
           child: Text(
             "Add to Cart",
             style: TextStyle(
               color: Colors.white,
-              fontSize: 12,
+              fontSize: 12.sp,
               fontWeight: FontWeight.w500,
             ),
           ),
