@@ -15,7 +15,19 @@ class ProductDetailsViewBody extends StatefulWidget {
 }
 
 class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
-  bool isFavorite = false;
+  late String selectedSize;
+  late Color selectedColor;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedSize = widget.product.sizes.isNotEmpty
+        ? widget.product.sizes[0]
+        : "";
+    selectedColor = widget.product.colors.isNotEmpty
+        ? widget.product.colors[0]
+        : Colors.transparent;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +35,31 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
       backgroundColor: AppColors.white,
       appBar: const AppBarDetails(),
       bottomNavigationBar: CheckoutSection(
-        product: widget.product,
+        product: widget.product.copyWith(
+          selectedSize: selectedSize,
+          selectedColor: selectedColor,
+        ),
         price: widget.product.price,
         text: "Add to cart",
         isIconFirst: true,
         icon: Icons.add_shopping_cart_outlined,
       ),
       body: SingleChildScrollView(
-        child: AllSectionDetails(product: widget.product),
+        child: AllSectionDetails(
+          product: widget.product,
+          selectedSize: selectedSize,
+          selectedColor: selectedColor,
+          onSizeChanged: (size) {
+            setState(() {
+              selectedSize = size;
+            });
+          },
+          onColorChanged: (color) {
+            setState(() {
+              selectedColor = color;
+            });
+          },
+        ),
       ),
     );
   }

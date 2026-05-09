@@ -6,7 +6,9 @@ import 'package:fresco/core/utils/text_style/app_text_style.dart';
 class SizeSection extends StatefulWidget {
   final List<String>? sizes;
 
-  const SizeSection({super.key, this.sizes});
+  final Function(String selectedSize) onSizeSelected;
+
+  const SizeSection({super.key, this.sizes, required this.onSizeSelected});
 
   @override
   State<SizeSection> createState() => _SizeSectionState();
@@ -14,6 +16,16 @@ class SizeSection extends StatefulWidget {
 
 class _SizeSectionState extends State<SizeSection> {
   int selectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.sizes != null && widget.sizes!.isNotEmpty) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        widget.onSizeSelected(widget.sizes![0]);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,18 +47,23 @@ class _SizeSectionState extends State<SizeSection> {
         ),
         SizedBox(height: 8.h),
 
-        Row(
-          children: List.generate(
-            sizes.length,
-            (index) => GestureDetector(
-              onTap: () {
-                setState(() {
-                  selectedIndex = index;
-                });
-              },
-              child: _SizeItem(
-                text: sizes[index],
-                selected: selectedIndex == index,
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: List.generate(
+              sizes.length,
+              (index) => GestureDetector(
+                onTap: () {
+                  setState(() {
+                    selectedIndex = index;
+                  });
+
+                  widget.onSizeSelected(sizes[index]);
+                },
+                child: _SizeItem(
+                  text: sizes[index],
+                  selected: selectedIndex == index,
+                ),
               ),
             ),
           ),
@@ -80,9 +97,12 @@ class _SizeItem extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.only(right: 20.w),
-      child: Text(
-        text,
-        style: AppTextStyle.bodyText14.copyWith(color: AppColors.textColor),
+      child: Container(
+        padding: EdgeInsets.all(8.r),
+        child: Text(
+          text,
+          style: AppTextStyle.bodyText14.copyWith(color: AppColors.textColor),
+        ),
       ),
     );
   }

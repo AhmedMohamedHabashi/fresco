@@ -5,7 +5,8 @@ import 'item_details.dart';
 import 'item_actions.dart';
 
 class CartItem extends StatelessWidget {
-  final String title, image, color, size, price, oldPrice;
+  final String title, image, size, price, oldPrice;
+  final Color? color;
   final int quantity;
   final bool isCart;
 

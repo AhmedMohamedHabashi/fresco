@@ -10,8 +10,20 @@ import 'package:fresco/feature/product_details/presentation/widgets/size_section
 
 class AllSectionDetails extends StatefulWidget {
   final ListModel product;
+  final Function(String size) onSizeChanged;
+  final Function(Color color) onColorChanged;
 
-  const AllSectionDetails({super.key, required this.product});
+  final String selectedSize;
+  final Color selectedColor;
+
+  const AllSectionDetails({
+    super.key,
+    required this.product,
+    required this.onSizeChanged,
+    required this.onColorChanged,
+    required this.selectedSize,
+    required this.selectedColor,
+  });
 
   @override
   State<AllSectionDetails> createState() => _AllSectionDetailsState();
@@ -30,6 +42,8 @@ class _AllSectionDetailsState extends State<AllSectionDetails> {
           PhotoSection(
             product: widget.product,
             isFavorite: isFavorite,
+            selectedSize: widget.selectedSize,
+            selectedColor: widget.selectedColor,
             onTapFavorite: () {
               setState(() {
                 isFavorite = !isFavorite;
@@ -51,10 +65,23 @@ class _AllSectionDetailsState extends State<AllSectionDetails> {
 
           SizedBox(height: 19.h),
 
-          SizeSection(sizes: widget.product.sizes),
+          SizeSection(
+            sizes: widget.product.sizes,
+            onSizeSelected: (size) {
+              widget.onSizeChanged(size);
+            },
+          ),
+
           SizedBox(height: 10.h),
 
-          ColorSection(colors: widget.product.colors),
+          ColorSection(
+            colors: widget.product.colors,
+            onColorSelected: (color) {
+              widget.onColorChanged(color);
+            },
+          ),
+
+          SizedBox(height: 30.h),
         ],
       ),
     );

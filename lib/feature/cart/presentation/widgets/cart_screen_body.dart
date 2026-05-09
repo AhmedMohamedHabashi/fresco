@@ -17,12 +17,12 @@ class CartScreenBody extends StatelessWidget {
               return CartItem(
                 title: product.title,
                 image: product.image,
-                color: 'Orange',
-                size: '40',
+                color: product.selectedColor ?? Colors.black,
+                size: product.selectedSize ?? "42",
                 price: product.price,
                 isCart: true,
                 quantity: 1,
-                oldPrice: '',
+                oldPrice: "1,500 EGP",
               );
             },
           ),
