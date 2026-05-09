@@ -6,6 +6,8 @@ import 'package:fresco/feature/cart/presentation/views/cart_screen.dart';
 import 'package:fresco/feature/category/presentation/views/category_view.dart';
 import 'package:fresco/feature/home/presentation/views/home_view.dart';
 import 'package:fresco/feature/layout/presentation/views/main_layout.dart';
+import 'package:fresco/feature/orderReview/presentation/views/Order_Review_Screen.dart';
+import 'package:fresco/feature/payment/presentation/views/payment_screen.dart';
 import 'package:fresco/feature/product_details/presentation/views/product_details_view.dart';
 import 'package:fresco/feature/product_list/data/models/list_model.dart';
 import 'package:fresco/feature/product_list/presentation/views/product_list.dart';
@@ -74,6 +76,15 @@ final GoRouter router = GoRouter(
         return CartScreen(addedProduct: product);
       },
     ),
+
+    GoRoute(
+      path: AppRoutes.orderReviewView,
+      builder: (context, state) {
+        final product = state.extra as ListModel? ?? ListModel.listphoto[0];
+        return OrderReviewScreen(product: product);
+      },
+    ),
+
     GoRoute(
       path: AppRoutes.searchView,
       builder: (context, state) => const SearchView(),
@@ -89,6 +100,10 @@ final GoRouter router = GoRouter(
 
         return ProductDetailsView(product: product);
       },
+    ),
+    GoRoute(
+      path: AppRoutes.PaymentScreen,
+      builder: (context, state) => const PaymentScreen(),
     ),
   ],
 );

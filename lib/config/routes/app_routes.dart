@@ -10,4 +10,6 @@ class AppRoutes {
   static const String wishlistView = '/wishlist';
   static const String accountView = '/account';
   static const String searchView = '/searchView';
+  static const String orderReviewView = '/orderReviewView';
+  static const String PaymentScreen = '/PaymentScreen';
 }
