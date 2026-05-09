@@ -17,29 +17,25 @@ class CustomButton extends StatelessWidget {
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          margin: EdgeInsets.symmetric(horizontal: 16.w),
-          child: ElevatedButton(
-            onPressed: onTap,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: color,
-              minimumSize: Size(double.infinity, 55.h),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.r),
-              ),
-            ),
-            child: Text(
-              buttonText ?? 'Login',
-              style: AppTextStyle.bodyText16.copyWith(
-                color: textColor,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 16.w),
+      child: ElevatedButton(
+        onPressed: onTap,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: color,
+          minimumSize: Size(double.infinity, 55.h),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.r),
           ),
         ),
-      ],
+        child: Text(
+          buttonText ?? 'Login',
+          style: AppTextStyle.bodyText16.copyWith(
+            color: textColor,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
     );
   }
 }

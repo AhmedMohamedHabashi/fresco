@@ -12,6 +12,7 @@ class CheckoutSection extends StatelessWidget {
   final bool isIconFirst;
   final IconData icon;
   final ListModel product;
+  final VoidCallback? onTap;
 
   const CheckoutSection({
     super.key,
@@ -20,6 +21,7 @@ class CheckoutSection extends StatelessWidget {
     required this.isIconFirst,
     required this.icon,
     required this.product,
+    this.onTap,
   });
 
   @override
@@ -53,9 +55,11 @@ class CheckoutSection extends StatelessWidget {
 
           Expanded(
             child: GestureDetector(
-              onTap: () {
-                context.push(AppRoutes.cartView, extra: product);
-              },
+              onTap:
+                  onTap ??
+                  () {
+                    context.push(AppRoutes.cartView, extra: product);
+                  },
               child: Container(
                 height: 55.h,
                 decoration: BoxDecoration(
