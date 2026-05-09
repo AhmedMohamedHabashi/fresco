@@ -25,7 +25,7 @@ class CheckoutSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 60.h),
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
       child: Row(
         children: [
           Column(

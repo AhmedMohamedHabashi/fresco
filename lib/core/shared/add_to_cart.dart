@@ -10,9 +10,7 @@ class AddToCartButton extends StatelessWidget {
     return SizedBox(
       height: 32,
       child: ElevatedButton(
-        onPressed: () {
-          // TODO: Add To Cart Logic
-        },
+        onPressed: () {},
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.mainColor,
           padding: EdgeInsets.symmetric(horizontal: 12.w),

@@ -5,8 +5,9 @@ import 'package:fresco/core/utils/text_style/app_text_style.dart';
 
 class ColorSection extends StatefulWidget {
   final List<Color>? colors;
+  final Function(Color selectedColor) onColorSelected;
 
-  const ColorSection({super.key, this.colors});
+  const ColorSection({super.key, this.colors, required this.onColorSelected});
 
   @override
   State<ColorSection> createState() => _ColorSectionState();
@@ -14,6 +15,17 @@ class ColorSection extends StatefulWidget {
 
 class _ColorSectionState extends State<ColorSection> {
   int selectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    if (widget.colors != null && widget.colors!.isNotEmpty) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        widget.onColorSelected(widget.colors![0]);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +55,8 @@ class _ColorSectionState extends State<ColorSection> {
                 setState(() {
                   selectedIndex = index;
                 });
+
+                widget.onColorSelected(colors[index]);
               },
               child: _ColorCircle(
                 color: colors[index],
@@ -65,11 +79,21 @@ class _ColorCircle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 20.w),
+      margin: EdgeInsets.only(
+        right: 20.w,
+        bottom: 10.h,
+      ), // ضفت margin بسيط تحت كمان
       width: 30.w,
       height: 30.h,
       alignment: Alignment.center,
-      decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+      decoration: BoxDecoration(
+        color: color,
+        shape: BoxShape.circle,
+        border: Border.all(
+          color: selected ? AppColors.mainColor : Colors.transparent,
+          width: 2,
+        ),
+      ),
       child: selected
           ? const Icon(Icons.check, color: Colors.white, size: 20)
           : null,

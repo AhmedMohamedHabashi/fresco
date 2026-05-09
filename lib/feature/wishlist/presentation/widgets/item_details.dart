@@ -4,8 +4,10 @@ import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/core/utils/text_style/app_text_style.dart';
 
 class ItemDetails extends StatelessWidget {
-  final String title, color, size;
+  final String title, size;
+  final Color? color;
   final bool isCart;
+
   const ItemDetails({
     super.key,
     required this.title,
@@ -42,14 +44,15 @@ class ItemDetails extends StatelessWidget {
             Container(
               width: 12.w,
               height: 12.h,
-              decoration: const BoxDecoration(
-                color: Color(0xFFBC3018),
+              decoration: BoxDecoration(
+                color: color ?? Colors.grey,
                 shape: BoxShape.circle,
+                border: Border.all(color: Colors.black12, width: 0.5),
               ),
             ),
             SizedBox(width: 5.w),
             Text(
-              isCart ? "$color | Size: $size" : color,
+              "Color | Size: $size", // خليناها ثابتة تظهر الكلمتين في الحالتين
               style: AppTextStyle.bodyText14.copyWith(
                 color: AppColors.descriptionColor,
               ),
