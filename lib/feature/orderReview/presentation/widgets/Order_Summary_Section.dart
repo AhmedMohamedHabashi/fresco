@@ -10,6 +10,12 @@ class OrderSummarySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double subtotal =
+        double.tryParse(price.replaceAll(RegExp(r'[^0-9.]'), '')) ?? 0.0;
+    double shipping = 50.0;
+    double tax = 20.0;
+    double total = subtotal + shipping + tax;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -21,11 +27,15 @@ class OrderSummarySection extends StatelessWidget {
           ),
         ),
         SizedBox(height: 12.h),
-        _buildBillDetail("Subtotal", price),
-        _buildBillDetail("Shipping Fee", "EGP 50.0"),
-        _buildBillDetail("Tax Fee", "EGP 20.0"),
+        _buildBillDetail("Subtotal", "EGP ${subtotal.toStringAsFixed(2)}"),
+        _buildBillDetail("Shipping Fee", "EGP ${shipping.toStringAsFixed(2)}"),
+        _buildBillDetail("Tax Fee", "EGP ${tax.toStringAsFixed(2)}"),
         const Divider(),
-        _buildBillDetail("Total Order", price, isTotal: true),
+        _buildBillDetail(
+          "Total Order",
+          "EGP ${total.toStringAsFixed(2)}",
+          isTotal: true,
+        ),
       ],
     );
   }
@@ -45,7 +55,7 @@ class OrderSummarySection extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: 100.w,
+            width: 120.w,
             child: Text(
               value,
               textAlign: TextAlign.right,
