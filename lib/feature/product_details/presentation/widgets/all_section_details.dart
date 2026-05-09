@@ -51,11 +51,10 @@ class _AllSectionDetailsState extends State<AllSectionDetails> {
 
           SizedBox(height: 19.h),
 
-          const SizeSection(),
-
+          SizeSection(sizes: widget.product.sizes),
           SizedBox(height: 10.h),
 
-          const ColorSection(),
+          ColorSection(colors: widget.product.colors),
         ],
       ),
     );

@@ -3,11 +3,26 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/core/utils/text_style/app_text_style.dart';
 
-class ColorSection extends StatelessWidget {
-  const ColorSection({super.key});
+class ColorSection extends StatefulWidget {
+  final List<Color>? colors;
+
+  const ColorSection({super.key, this.colors});
+
+  @override
+  State<ColorSection> createState() => _ColorSectionState();
+}
+
+class _ColorSectionState extends State<ColorSection> {
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    final colors = widget.colors;
+
+    if (colors == null || colors.isEmpty) {
+      return const SizedBox();
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -18,17 +33,23 @@ class ColorSection extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-
         SizedBox(height: 10.h),
 
         Wrap(
-          children: const [
-            _ColorCircle(color: AppColors.black),
-            _ColorCircle(color: AppColors.red, selected: true),
-            _ColorCircle(color: AppColors.lightBlue),
-            _ColorCircle(color: AppColors.green),
-            _ColorCircle(color: AppColors.CoralRed),
-          ],
+          children: List.generate(
+            colors.length,
+            (index) => GestureDetector(
+              onTap: () {
+                setState(() {
+                  selectedIndex = index;
+                });
+              },
+              child: _ColorCircle(
+                color: colors[index],
+                selected: selectedIndex == index,
+              ),
+            ),
+          ),
         ),
       ],
     );
@@ -50,7 +71,7 @@ class _ColorCircle extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(color: color, shape: BoxShape.circle),
       child: selected
-          ? const Icon(Icons.check, color: Colors.white, size: 16)
+          ? const Icon(Icons.check, color: Colors.white, size: 20)
           : null,
     );
   }
