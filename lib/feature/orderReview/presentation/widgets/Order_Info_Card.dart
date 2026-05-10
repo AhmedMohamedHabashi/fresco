@@ -77,8 +77,8 @@ class OrderInfoCard extends StatelessWidget {
                               "Change Address",
                               style: TextStyle(color: AppColors.primaryColor),
                             ),
-                            onTap: () {
-                              openMap();
+                            onTap: () async {
+                              await openMap(context);
                               context.pop();
                             },
                           ),
