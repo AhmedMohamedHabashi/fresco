@@ -23,7 +23,7 @@ class OrderSummarySection extends StatelessWidget {
           "Order Summary",
           style: AppTextStyle.bodyText18.copyWith(
             fontWeight: FontWeight.bold,
-            color: AppColors.textColor,
+            color: AppColors.primaryColor,
           ),
         ),
         SizedBox(height: 12.h),
@@ -51,6 +51,7 @@ class OrderSummarySection extends StatelessWidget {
               style: TextStyle(
                 fontSize: isTotal ? 18.sp : 14.sp,
                 fontWeight: isTotal ? FontWeight.bold : FontWeight.normal,
+                color: isTotal ? AppColors.primaryColor : AppColors.black,
               ),
             ),
           ),
@@ -62,7 +63,7 @@ class OrderSummarySection extends StatelessWidget {
               style: TextStyle(
                 fontSize: isTotal ? 18.sp : 14.sp,
                 fontWeight: isTotal ? FontWeight.bold : FontWeight.normal,
-                color: isTotal ? AppColors.primaryColor : Colors.black,
+                color: isTotal ? AppColors.primaryColor : AppColors.black,
               ),
             ),
           ),

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/config/routes/app_routes.dart';
 import 'package:fresco/core/shared/custom_button.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
+import 'package:fresco/core/utils/text_style/app_text_style.dart';
 import 'package:go_router/go_router.dart';
 
 class PaymentScreenBody extends StatelessWidget {
@@ -19,13 +20,18 @@ class PaymentScreenBody extends StatelessWidget {
           SizedBox(height: 30.h),
           Text(
             "Payment Success!",
-            style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),
+            style: AppTextStyle.bodyText22.copyWith(
+              fontWeight: FontWeight.bold,
+              color: AppColors.primaryColor,
+            ), // TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 10.h),
           Text(
             "Your item will be shipped soon!",
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16.sp, color: Colors.grey),
+            style: AppTextStyle.bodyText16.copyWith(
+              color: AppColors.mediumGrey,
+            ),
           ),
           SizedBox(height: 50.h),
           CustomButton(
@@ -34,7 +40,7 @@ class PaymentScreenBody extends StatelessWidget {
               context.go(AppRoutes.homeView);
             },
             color: AppColors.primaryColor,
-            textColor: Colors.white,
+            textColor: AppColors.white,
           ),
         ],
       ),

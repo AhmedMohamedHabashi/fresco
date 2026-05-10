@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomAppBarView extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -9,14 +10,14 @@ class CustomAppBarView extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.white,
       elevation: 0,
-      surfaceTintColor: Colors.transparent,
+      surfaceTintColor: AppColors.transparent,
       scrolledUnderElevation: 0,
       centerTitle: true,
       leading: IconButton(
         icon: const Icon(Icons.arrow_back, color: AppColors.primaryColor),
-        onPressed: () => Navigator.pop(context),
+        onPressed: () => context.pop(),
       ),
       title: Text(
         title,

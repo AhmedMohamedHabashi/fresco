@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fresco/core/utils/colors/app_colors.dart';
+import 'package:fresco/core/utils/text_style/app_text_style.dart';
 import 'package:fresco/feature/product_list/data/models/list_model.dart';
 import 'package:fresco/feature/wishlist/data/wishlist_controller.dart';
 import 'package:fresco/feature/wishlist/presentation/widgets/cart_item.dart';
@@ -24,16 +27,19 @@ class _WishlistScreenBodyState extends State<WishlistScreenBody> {
       valueListenable: WishlistController.items,
       builder: (context, items, _) {
         if (items.isEmpty) {
-          return const Center(
+          return Center(
             child: Text(
-              "Wishlist is empty ❤️",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              "Start adding your favorite products",
+              textAlign: TextAlign.center,
+              style: AppTextStyle.bodyText18.copyWith(
+                color: AppColors.primaryColor,
+              ),
             ),
           );
         }
 
         return ListView.builder(
-          padding: const EdgeInsets.symmetric(vertical: 10),
+          padding: EdgeInsets.symmetric(vertical: 10.h),
           itemCount: items.length,
           itemBuilder: (context, index) {
             final product = items[index];
@@ -45,7 +51,7 @@ class _WishlistScreenBodyState extends State<WishlistScreenBody> {
                   product.selectedColor ??
                   (product.colors.isNotEmpty
                       ? product.colors.first
-                      : Colors.black),
+                      : AppColors.black),
               price: product.price,
               oldPrice: "EGP 1,500",
               isCart: false,

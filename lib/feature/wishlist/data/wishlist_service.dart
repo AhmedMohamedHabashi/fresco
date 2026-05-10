@@ -5,61 +5,71 @@ import 'package:fresco/feature/product_list/data/models/list_model.dart';
 class WishlistService {
   static const String key = "wishlist";
 
-  // جلب الداتا
   static Future<List<ListModel>> getItems() async {
-    final prefs = await SharedPreferences.getInstance();
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final data = prefs.getString(key);
+      if (data == null) return [];
 
-    final data = prefs.getString(key);
-
-    if (data == null) return [];
-
-    final decoded = jsonDecode(data) as List;
-
-    return decoded.map((e) => ListModel.fromJson(e)).toList();
+      final decoded = jsonDecode(data) as List;
+      return decoded.map((e) => ListModel.fromJson(e)).toList();
+    } catch (e) {
+      return [];
+    }
   }
 
-  // حفظ الداتا
   static Future<void> _save(List<ListModel> items) async {
-    final prefs = await SharedPreferences.getInstance();
+    try {
+      final prefs = await SharedPreferences.getInstance();
 
-    final encoded = jsonEncode(items.map((e) => e.toJson()).toList());
+      final encoded = jsonEncode(items.map((e) => e.toJson()).toList());
 
-    await prefs.setString(key, encoded);
+      await prefs.setString(key, encoded);
+    } catch (e) {
+      print("Save Error: $e");
+    }
   }
 
-  // إضافة
   static Future<void> addItem(ListModel product) async {
-    final items = await getItems();
-
-    final exists = items.any((e) => e.id == product.id);
-
-    if (!exists) {
-      items.add(product);
-      await _save(items);
+    try {
+      final items = await getItems();
+      final exists = items.any((e) => e.id == product.id);
+      if (!exists) {
+        items.add(product);
+        await _save(items);
+      }
+    } catch (e) {
+      print("Add Item Error: $e");
     }
   }
 
-  // حذف
   static Future<void> removeItem(ListModel product) async {
-    final items = await getItems();
+    try {
+      final items = await getItems();
 
-    items.removeWhere((e) => e.id == product.id);
+      items.removeWhere((e) => e.id == product.id);
 
-    await _save(items);
+      await _save(items);
+    } catch (e) {
+      print("Remove Item Error: $e");
+    }
   }
 
-  // toggle (مفيد للقلب ❤️)
   static Future<void> toggleItem(ListModel product) async {
-    final items = await getItems();
+    try {
+      final items = await getItems();
 
-    final index = items.indexWhere((e) => e.id == product.id);
+      final index = items.indexWhere((e) => e.id == product.id);
 
-    if (index == -1) {
-      items.add(product);
-    } else {
-      items.removeAt(index);
+      if (index == -1) {
+        items.add(product);
+      } else {
+        items.removeAt(index);
+      }
+
+      await _save(items);
+    } catch (e) {
+      print("Toggle Error: $e");
     }
-
-    await _save(items);
   }
 }

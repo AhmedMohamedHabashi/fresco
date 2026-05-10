@@ -18,7 +18,7 @@ class MainHeader extends StatelessWidget {
           children: [
             Text('Good Morning', style: AppTextStyle.bodyText16),
             Text(
-              'Ahmed',
+              'Test',
               style: AppTextStyle.bodyText18.copyWith(
                 fontWeight: FontWeight.bold,
               ),
