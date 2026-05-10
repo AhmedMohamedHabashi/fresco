@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
+import 'package:fresco/core/utils/text_style/app_text_style.dart';
 
 class AddToCartButton extends StatelessWidget {
   const AddToCartButton({super.key});
@@ -20,14 +21,7 @@ class AddToCartButton extends StatelessWidget {
         ),
         child: FittedBox(
           fit: BoxFit.scaleDown,
-          child: Text(
-            "Add to Cart",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 12.sp,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
+          child: Text("Add to Cart", style: AppTextStyle.bodyText12),
         ),
       ),
     );

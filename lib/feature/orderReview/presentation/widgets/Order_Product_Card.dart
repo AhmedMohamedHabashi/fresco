@@ -12,10 +12,17 @@ class OrderProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10.w),
+      padding: EdgeInsets.all(6.w),
       decoration: BoxDecoration(
-        color: Colors.grey[100],
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(15.r),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.black.withOpacity(0.2),
+            blurRadius: 8.r,
+            offset: Offset(0, 4),
+          ),
+        ],
       ),
       child: Row(
         children: [
@@ -23,8 +30,8 @@ class OrderProductCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.r),
             child: Image.asset(
               product.image,
-              width: 70.w,
-              height: 70.h,
+              width: 80.w,
+              height: 80.h,
               fit: BoxFit.cover,
             ),
           ),
@@ -42,9 +49,8 @@ class OrderProductCard extends StatelessWidget {
                 ),
                 Text(
                   "Color: Orange | Size: 40",
-                  style: TextStyle(
+                  style: AppTextStyle.bodyText12.copyWith(
                     color: AppColors.mediumGrey,
-                    fontSize: 12.sp,
                   ),
                 ),
               ],
