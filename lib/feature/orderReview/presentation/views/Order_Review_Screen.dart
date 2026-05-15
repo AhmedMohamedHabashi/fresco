@@ -33,7 +33,7 @@ class OrderReviewScreen extends StatelessWidget {
       bottomNavigationBar: ConfirmOrderButton(
         price: "EGP ${totalAmount.toStringAsFixed(2)}",
         onPressed: () {
-          context.push(AppRoutes.PaymentScreen);
+          context.push(AppRoutes.paymentScreen);
         },
       ),
     );

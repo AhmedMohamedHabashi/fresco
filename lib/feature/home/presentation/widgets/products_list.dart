@@ -28,8 +28,13 @@ class ProductsList extends StatelessWidget {
         final item = ListModel.listphoto[index];
 
         return ProductItem(
-          isFavorite: isFavorite,
-          onTapFavorite: onTapFavorite,
+          isFavorite: item.isFavorite,
+          onTapFavorite: () {
+            ListModel.listphoto[index] = ListModel.listphoto[index].copyWith(
+              isFavorite: !ListModel.listphoto[index].isFavorite,
+            );
+            (context as Element).markNeedsBuild();
+          },
           image: item.image,
           title: item.title,
           subtitle: item.subtitle,

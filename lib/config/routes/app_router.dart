@@ -90,7 +90,7 @@ final GoRouter router = GoRouter(
       builder: (context, state) => const SearchView(),
     ),
     GoRoute(
-      path: AppRoutes.ProductList,
+      path: AppRoutes.productList,
       builder: (context, state) => const ProductList(),
     ),
     GoRoute(
@@ -102,7 +102,7 @@ final GoRouter router = GoRouter(
       },
     ),
     GoRoute(
-      path: AppRoutes.PaymentScreen,
+      path: AppRoutes.paymentScreen,
       builder: (context, state) => const PaymentScreen(),
     ),
   ],

@@ -25,6 +25,7 @@ class OrderReviewBody extends StatelessWidget {
           icon: Icons.credit_card,
           title: "Master Card",
           subtitle: "**** **** **** 1234",
+          isPayment: true,
         ),
         SizedBox(height: 20.h),
 
@@ -32,7 +33,8 @@ class OrderReviewBody extends StatelessWidget {
           sectionTitle: "Shipping Address",
           icon: Icons.location_on_outlined,
           title: "Test User",
-          subtitle: "Alexandria, Egypt | +20 121 238 1254",
+          subtitle: "Alexandria, Egypt | +20 123 456 7890",
+          isPayment: false,
         ),
       ],
     );
