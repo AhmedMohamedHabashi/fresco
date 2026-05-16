@@ -50,7 +50,7 @@ class MainHeader extends StatelessWidget {
                 constraints: BoxConstraints(minWidth: 14.w, minHeight: 14.h),
                 child: Center(
                   child: Text(
-                    '3',
+                    '1',
                     style: TextStyle(
                       color: AppColors.primaryColor,
                       fontSize: 10.sp,
