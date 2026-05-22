@@ -13,14 +13,14 @@ import 'package:fresco/feature/auth/presentation/login/widgets/welcome_widget.da
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class BodyAccountView extends StatefulWidget {
-  const BodyAccountView({super.key});
+class AccountViewBody extends StatefulWidget {
+  const AccountViewBody({super.key});
 
   @override
-  State<BodyAccountView> createState() => _BodyAccountViewState();
+  State<AccountViewBody> createState() => _AccountViewBodyState();
 }
 
-class _BodyAccountViewState extends State<BodyAccountView> {
+class _AccountViewBodyState extends State<AccountViewBody> {
   final Map<String, bool> _isEditing = {
     'name': false,
     'email': false,

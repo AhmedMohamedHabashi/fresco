@@ -12,7 +12,6 @@ class ListModel {
   final List<Color> colors;
   final bool isFavorite;
 
-  // الحقول الجديدة لتخزين اختيار المستخدم
   final String? selectedSize;
   final Color? selectedColor;
 
@@ -25,12 +24,11 @@ class ListModel {
     required this.rating,
     required this.sizes,
     required this.colors,
-    this.selectedSize, // اختياري في الليست العامة، وإجباري عند الإضافة للكارت
+    this.selectedSize,
     this.selectedColor,
     this.isFavorite = false,
   });
 
-  // دالة الـ copyWith (أهم دالة عشان تاخد نسخة من المنتج وتحط فيها الاختيارات)
   ListModel copyWith({
     String? selectedSize,
     Color? selectedColor,
@@ -51,7 +49,6 @@ class ListModel {
     );
   }
 
-  //  تحويل البيانات لـ JSON (عشان التخزين)
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -63,11 +60,10 @@ class ListModel {
       'sizes': sizes,
       'colors': colors.map((e) => e.value).toList(),
       'selectedSize': selectedSize,
-      'selectedColor': selectedColor?.value, // بنخزن قيمة اللون كـ int
+      'selectedColor': selectedColor?.value,
     };
   }
 
-  // استقبال البيانات من JSON
   factory ListModel.fromJson(Map<String, dynamic> json) {
     return ListModel(
       id: json['id'] ?? '',
