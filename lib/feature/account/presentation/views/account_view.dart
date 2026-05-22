@@ -6,14 +6,9 @@ import 'package:fresco/feature/account/presentation/widgets/body_account_view.da
 import 'package:fresco/feature/auth/data/service/auth_service.dart';
 import 'package:fresco/feature/auth/presentation/cubit/auth_cubit.dart';
 
-class AccountView extends StatefulWidget {
+class AccountView extends StatelessWidget {
   const AccountView({super.key});
 
-  @override
-  State<AccountView> createState() => _AccountViewState();
-}
-
-class _AccountViewState extends State<AccountView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +18,7 @@ class _AccountViewState extends State<AccountView> {
           padding: EdgeInsets.all(16.w),
           child: BlocProvider(
             create: (context) => AuthCubit(AuthService()),
-            child: const BodyAccountView(),
+            child: const AccountViewBody(),
           ),
         ),
       ),

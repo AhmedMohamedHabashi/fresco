@@ -61,7 +61,6 @@ class _PhotoSectionState extends State<PhotoSection> {
                 right: 10.w,
                 child: GestureDetector(
                   onTap: () async {
-                    // 🟢 الزتونة هنا: بنعمل نسخة جديدة فيها الاختيارات قبل ما نبعتها للـ Controller
                     final productToSave = widget.product.copyWith(
                       selectedSize: widget.selectedSize,
                       selectedColor: widget.selectedColor,
