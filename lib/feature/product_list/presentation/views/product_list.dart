@@ -1,37 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:fresco/core/shared/custom_app_bar.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
-import 'package:fresco/feature/home/presentation/widgets/products_list.dart';
+import 'package:fresco/feature/product_list/presentation/widgets/product_list_body.dart';
 
-class ProductList extends StatefulWidget {
+class ProductList extends StatelessWidget {
   const ProductList({super.key});
-
-  @override
-  State<ProductList> createState() => _ProductListState();
-}
-
-class _ProductListState extends State<ProductList> {
-  bool isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: const CustomAppBar(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            ProductsList(
-              isFavorite: isFavorite,
-              onTapFavorite: () {
-                setState(() {
-                  isFavorite = !isFavorite;
-                });
-              },
-            ),
-          ],
-        ),
-      ),
+      body: const ProductListBody(),
     );
   }
 }

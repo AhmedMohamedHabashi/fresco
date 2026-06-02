@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fresco/config/routes/app_routes.dart';
-import 'package:fresco/core/shared/custom_button.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
-import 'package:fresco/feature/account/presentation/widgets/account_header.dart';
-import 'package:fresco/feature/account/presentation/widgets/account_section_title.dart';
-import 'package:fresco/feature/account/presentation/widgets/account_text_field.dart';
-import 'package:fresco/feature/auth/presentation/cubit/auth_cubit.dart';
-import 'package:fresco/feature/auth/presentation/cubit/auth_state.dart';
-import 'package:fresco/feature/auth/presentation/login/widgets/welcome_widget.dart';
-import 'package:go_router/go_router.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:fresco/feature/account/presentation/cubit/account_cubit.dart';
+import 'package:fresco/feature/account/presentation/cubit/account_state.dart';
+import 'package:fresco/feature/account/presentation/widgets/account_header_section.dart';
+import 'package:fresco/feature/account/presentation/widgets/account_info_field.dart';
+import 'package:fresco/feature/account/presentation/widgets/account_logout_button.dart';
 
 class AccountViewBody extends StatefulWidget {
   const AccountViewBody({super.key});
@@ -21,13 +16,18 @@ class AccountViewBody extends StatefulWidget {
 }
 
 class _AccountViewBodyState extends State<AccountViewBody> {
+  final nameController = TextEditingController();
+  final phoneController = TextEditingController();
+  final addressController = TextEditingController();
+  final emailController = TextEditingController();
+
   final Map<String, bool> _isEditing = {
     'name': false,
-    'email': false,
-    'password': false,
     'phone': false,
     'address': false,
   };
+
+  bool _isInitialized = false;
 
   void toggleEdit(String field) {
     setState(() {
@@ -35,108 +35,122 @@ class _AccountViewBodyState extends State<AccountViewBody> {
     });
   }
 
+  void _fillControllers(AccountLoaded state) {
+    if (_isInitialized) return;
+
+    final user = state.user;
+
+    nameController.text = user.name;
+    phoneController.text = user.phone;
+    addressController.text = user.address;
+    emailController.text = user.email;
+
+    _isInitialized = true;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AuthCubit, AuthState>(
-      listener: (context, state) async {
-        if (state is LogoutSuccess) {
-          final prefs = await SharedPreferences.getInstance();
-
-          await prefs.setBool('isLoggedIn', false);
-          await prefs.remove('name');
-          await prefs.remove('email');
-
-          if (!mounted) return;
-          context.go(AppRoutes.signInView);
-        }
-        if (state is AuthError) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(state.errMsg)));
-        }
-      },
+    return BlocBuilder<AccountCubit, AccountState>(
       builder: (context, state) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const AccountAppBar(),
+        if (state is AccountLoading) {
+          return const Center(
+            child: CircularProgressIndicator(color: AppColors.primaryColor),
+          );
+        }
 
-            const WelcomeWidget(
-              title: 'Welcome Back, Test',
-              subtitle: 'Test@gmail.com',
-              hotizontalPadding: false,
-              colorText: true,
+        if (state is AccountError) {
+          return Center(child: Text(state.errMsg));
+        }
+
+        if (state is AccountLoaded) {
+          _fillControllers(state);
+
+          final user = state.user;
+
+          return SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AccountHeaderSection(email: user.email),
+
+                AccountInfoField(
+                  title: 'Your full name',
+                  controller: nameController,
+                  isEditing: _isEditing['name'] ?? false,
+                  onEdit: () => toggleEdit('name'),
+                  onSave: () {
+                    context.read<AccountCubit>().updateUser(
+                      name: nameController.text,
+                      phone: phoneController.text,
+                      address: addressController.text,
+                    );
+                    toggleEdit('name');
+                  },
+                ),
+
+                SizedBox(height: 10.h),
+
+                AccountInfoField(
+                  title: 'Your E-mail',
+                  controller: emailController,
+                  isEditing: false,
+                  onEdit: () {},
+                  onSave: () {},
+                ),
+
+                SizedBox(height: 10.h),
+
+                AccountInfoField(
+                  title: 'Your mobile number',
+                  controller: phoneController,
+                  isEditing: _isEditing['phone'] ?? false,
+                  onEdit: () => toggleEdit('phone'),
+                  onSave: () {
+                    context.read<AccountCubit>().updateUser(
+                      name: nameController.text,
+                      phone: phoneController.text,
+                      address: addressController.text,
+                    );
+                    toggleEdit('phone');
+                  },
+                ),
+
+                SizedBox(height: 10.h),
+
+                AccountInfoField(
+                  title: 'Your address',
+                  controller: addressController,
+                  isEditing: _isEditing['address'] ?? false,
+                  onEdit: () => toggleEdit('address'),
+                  onSave: () {
+                    context.read<AccountCubit>().updateUser(
+                      name: nameController.text,
+                      phone: phoneController.text,
+                      address: addressController.text,
+                    );
+                    toggleEdit('address');
+                  },
+                ),
+
+                SizedBox(height: 20.h),
+
+                const AccountLogoutButton(),
+              ],
             ),
+          );
+        }
 
-            SizedBox(height: 10.h),
-
-            const AccountSectionTitle(
-              title: 'Your full name',
-              color: AppColors.primaryColor,
-            ),
-
-            AccountTextField(
-              value: 'Test',
-              isEditing: _isEditing['name']!,
-              onPressed: () => toggleEdit('name'),
-              color: AppColors.primaryColor,
-            ),
-
-            const AccountSectionTitle(
-              title: 'Your E-mail',
-              color: AppColors.primaryColor,
-            ),
-
-            AccountTextField(
-              value: 'test@gmail.com',
-              isEditing: _isEditing['email']!,
-              onPressed: () => toggleEdit('email'),
-              color: AppColors.primaryColor,
-            ),
-
-            const AccountSectionTitle(
-              title: 'Your mobile number',
-              color: AppColors.primaryColor,
-            ),
-
-            AccountTextField(
-              value: '0123456789',
-              isEditing: _isEditing['phone']!,
-              onPressed: () => toggleEdit('phone'),
-              color: AppColors.primaryColor,
-            ),
-
-            const AccountSectionTitle(
-              title: 'Your Address',
-              color: AppColors.primaryColor,
-            ),
-
-            AccountTextField(
-              value: 'Alexandria',
-              isEditing: _isEditing['address']!,
-              onPressed: () => toggleEdit('address'),
-              color: AppColors.primaryColor,
-            ),
-
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 20.h),
-              child: state is AuthLoading
-                  ? const CircularProgressIndicator(
-                      color: AppColors.primaryColor,
-                    )
-                  : CustomButton(
-                      color: AppColors.primaryColor,
-                      textColor: AppColors.white,
-                      buttonText: 'Logout',
-                      onTap: () {
-                        context.read<AuthCubit>().logout();
-                      },
-                    ),
-            ),
-          ],
-        );
+        return const SizedBox();
       },
     );
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    phoneController.dispose();
+    addressController.dispose();
+    emailController.dispose();
+    super.dispose();
   }
 }

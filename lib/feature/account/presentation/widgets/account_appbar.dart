@@ -9,14 +9,28 @@ class AccountAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      toolbarHeight: 70.h,
+      toolbarHeight: 67.h,
       backgroundColor: AppColors.white,
       elevation: 0,
       leadingWidth: 65.w,
       leading: Image.asset(AssetsHelper.logo, fit: BoxFit.cover),
+
+      actions: [
+        IconButton(
+          onPressed: () {
+            // TODO: فتح صفحة الإشعارات
+          },
+          icon: Icon(
+            Icons.notifications_none,
+            color: AppColors.primaryColor,
+            size: 26.sp,
+          ),
+        ),
+        SizedBox(width: 8.w),
+      ],
     );
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(70.h);
+  Size get preferredSize => Size.fromHeight(67.h);
 }

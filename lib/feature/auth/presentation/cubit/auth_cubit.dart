@@ -6,10 +6,22 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit(this._authService) : super(AuthInitial());
   final AuthService _authService;
 
-  Future<void> signUp({required String email, required String password}) async {
+  Future<void> signUp({
+    required String name,
+    required String email,
+    required String password,
+    required String phone,
+    required String address,
+  }) async {
     emit(AuthLoading());
     try {
-      await _authService.register(email: email, password: password);
+      await _authService.register(
+        email: email,
+        password: password,
+        name: name,
+        phone: phone,
+        address: address,
+      );
       emit(SignUpSuccess());
     } catch (e) {
       emit(AuthError(e.toString()));

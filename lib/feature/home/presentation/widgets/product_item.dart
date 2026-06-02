@@ -1,33 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
-import 'package:fresco/feature/home/presentation/widgets/product_details.dart';
-import 'package:fresco/feature/home/presentation/widgets/product_item_img.dart';
+import 'package:fresco/feature/product_list/domain/entities/product.dart';
+import 'product_item_img.dart';
+import 'product_details.dart';
 
 class ProductItem extends StatelessWidget {
+  final Product product;
+  final bool isFavorite;
+  final VoidCallback? onTapFavorite;
+  final VoidCallback? onTap;
+
   const ProductItem({
     super.key,
+    required this.product,
     required this.isFavorite,
     this.onTapFavorite,
-    required this.image,
-    required this.title,
-    required this.subtitle,
-    required this.price,
-    required this.rating,
     this.onTap,
   });
 
-  final bool isFavorite;
-  final void Function()? onTapFavorite;
-  final void Function()? onTap;
-
-  final String image;
-  final String title;
-  final String subtitle;
-  final String price;
-  final String rating;
-
-  @override
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -36,26 +27,21 @@ class ProductItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(20.r),
         onTap: onTap,
         child: Container(
+          height: 240.h,
           padding: EdgeInsets.all(4.w),
-          height: 210.h,
           decoration: BoxDecoration(
             color: AppColors.lightBlue.withOpacity(0.1),
             borderRadius: BorderRadius.circular(20.r),
           ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               ProductItemImage(
-                image: image,
+                image: product.image,
                 isFavorite: isFavorite,
                 onTapFavorite: onTapFavorite,
               ),
-              ProductDetails(
-                title: title,
-                subtitle: subtitle,
-                price: price,
-                rating: rating,
-              ),
+              Expanded(child: ProductDetails(product: product)),
             ],
           ),
         ),

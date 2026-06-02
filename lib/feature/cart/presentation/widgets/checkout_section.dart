@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fresco/config/routes/app_routes.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/core/utils/text_style/app_text_style.dart';
-import 'package:fresco/feature/product_list/data/models/list_model.dart';
-import 'package:go_router/go_router.dart';
 
 class CheckoutSection extends StatelessWidget {
   final String text;
   final String price;
   final bool isIconFirst;
   final IconData icon;
-  final ListModel product;
   final VoidCallback? onTap;
 
   const CheckoutSection({
@@ -20,7 +16,6 @@ class CheckoutSection extends StatelessWidget {
     required this.price,
     required this.isIconFirst,
     required this.icon,
-    required this.product,
     this.onTap,
   });
 
@@ -55,11 +50,7 @@ class CheckoutSection extends StatelessWidget {
 
           Expanded(
             child: GestureDetector(
-              onTap:
-                  onTap ??
-                  () {
-                    context.push(AppRoutes.cartView, extra: product);
-                  },
+              onTap: onTap,
               child: Container(
                 height: 55.h,
                 decoration: BoxDecoration(

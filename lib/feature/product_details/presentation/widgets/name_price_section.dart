@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/core/utils/text_style/app_text_style.dart';
-import 'package:fresco/feature/product_list/data/models/list_model.dart';
+import 'package:fresco/feature/product_list/domain/entities/product.dart';
 
 class NamePriceSection extends StatelessWidget {
-  final ListModel product;
+  final Product product;
 
   const NamePriceSection({super.key, required this.product});
 
@@ -23,7 +23,7 @@ class NamePriceSection extends StatelessWidget {
         ),
 
         Text(
-          product.price,
+          "${product.price} EGP",
           style: AppTextStyle.bodyText18.copyWith(color: AppColors.mainColor),
         ),
       ],

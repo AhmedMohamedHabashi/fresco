@@ -28,9 +28,24 @@ class _LoginViewBodyState extends State<LoginViewBody> {
       child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) async {
           if (state is AuthError) {
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text(state.errMsg)));
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                duration: const Duration(seconds: 1),
+                content: Row(
+                  children: [
+                    const Icon(Icons.error_outline, color: AppColors.white),
+                    SizedBox(width: 10),
+                    Expanded(child: Text(state.errMsg)),
+                  ],
+                ),
+                backgroundColor: AppColors.errColor,
+                behavior: SnackBarBehavior.floating,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                margin: const EdgeInsets.all(12),
+              ),
+            );
           }
           if (state is LoginSuccess) {
             final prefs = await SharedPreferences.getInstance();

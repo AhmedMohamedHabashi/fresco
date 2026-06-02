@@ -4,18 +4,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AccountTextField extends StatelessWidget {
   const AccountTextField({
     super.key,
-    required this.value,
+    required this.controller,
     required this.isEditing,
-    required this.onPressed,
+    required this.onEditPressed,
+    required this.onSavePressed,
     required this.color,
-    this.obscureText = false,
   });
 
-  final String value;
+  final TextEditingController controller;
   final bool isEditing;
-  final VoidCallback onPressed;
+  final VoidCallback onEditPressed;
+  final VoidCallback onSavePressed;
   final Color color;
-  final bool obscureText;
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +26,8 @@ class AccountTextField extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: TextFormField(
-        initialValue: value,
+        controller: controller,
         readOnly: !isEditing,
-        obscureText: obscureText && !isEditing,
-        textAlignVertical: TextAlignVertical.center,
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.symmetric(
@@ -38,7 +36,12 @@ class AccountTextField extends StatelessWidget {
           ),
           suffixIcon: IconButton(
             icon: Icon(isEditing ? Icons.check : Icons.edit),
-            onPressed: onPressed,
+            onPressed: () {
+              if (isEditing) {
+                onSavePressed();
+              }
+              onEditPressed();
+            },
           ),
         ),
       ),

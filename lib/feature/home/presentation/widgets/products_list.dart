@@ -2,49 +2,55 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/config/routes/app_routes.dart';
 import 'package:fresco/feature/home/presentation/widgets/product_item.dart';
-import 'package:fresco/feature/product_list/data/models/list_model.dart';
+import 'package:fresco/feature/product_list/domain/entities/product.dart';
 import 'package:go_router/go_router.dart';
 
 class ProductsList extends StatelessWidget {
-  const ProductsList({super.key, required this.isFavorite, this.onTapFavorite});
+  final List<Product> products;
 
-  final bool isFavorite;
-  final void Function()? onTapFavorite;
+  final Set<int> favorites;
+  final Function(int productId) onTapFavorite;
+
+  const ProductsList({
+    super.key,
+    required this.products,
+    required this.favorites,
+    required this.onTapFavorite,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
-      itemCount: ListModel.listphoto.length,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisSpacing: 22.h,
-        crossAxisSpacing: 22.w,
-        childAspectRatio: 0.77,
-      ),
-      itemBuilder: (context, index) {
-        final item = ListModel.listphoto[index];
+    if (products.isEmpty) {
+      return const Center(child: Text("No products found"));
+    }
 
-        return ProductItem(
-          isFavorite: item.isFavorite,
-          onTapFavorite: () {
-            ListModel.listphoto[index] = ListModel.listphoto[index].copyWith(
-              isFavorite: !ListModel.listphoto[index].isFavorite,
-            );
-            (context as Element).markNeedsBuild();
-          },
-          image: item.image,
-          title: item.title,
-          subtitle: item.subtitle,
-          price: item.price,
-          rating: item.rating,
-          onTap: () {
-            context.push(AppRoutes.productDetailsView, extra: item);
-          },
-        );
-      },
+    return Padding(
+      padding: EdgeInsets.all(10.w),
+      child: GridView.builder(
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: products.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 16.w,
+          mainAxisSpacing: 16.h,
+          childAspectRatio: 0.73,
+        ),
+        itemBuilder: (context, index) {
+          final item = products[index];
+
+          final isFav = favorites.contains(item.id);
+
+          return ProductItem(
+            product: item,
+            isFavorite: isFav,
+            onTapFavorite: () => onTapFavorite(item.id),
+            onTap: () {
+              context.push(AppRoutes.productDetailsView, extra: item);
+            },
+          );
+        },
+      ),
     );
   }
 }

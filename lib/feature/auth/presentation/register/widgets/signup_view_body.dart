@@ -20,6 +20,9 @@ class SignUpViewBody extends StatefulWidget {
 class _SignUpViewBodyState extends State<SignUpViewBody> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -43,15 +46,21 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               const AuthHeader(height: 210),
 
               CustomTextField(
-                controller: TextEditingController(),
+                controller: nameController,
                 title: 'Full Name',
                 hintText: 'Enter your Full Name',
               ),
 
               CustomTextField(
-                controller: TextEditingController(),
+                controller: phoneController,
                 title: 'Mobile Number',
                 hintText: 'Enter your Mobile no.',
+              ),
+
+              CustomTextField(
+                controller: addressController,
+                title: 'Address',
+                hintText: 'Enter your address',
               ),
 
               CustomTextField(
@@ -71,12 +80,15 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 padding: const EdgeInsets.only(bottom: 20),
 
                 child: (state is AuthLoading)
-                    ? const CircularProgressIndicator()
+                    ? const CircularProgressIndicator(color: AppColors.white)
                     : CustomButton(
                         buttonText: 'Sign Up',
                         onTap: () {
-                          if (emailController.text.isEmpty ||
-                              passwordController.text.isEmpty) {
+                          if (nameController.text.isEmpty ||
+                              emailController.text.isEmpty ||
+                              passwordController.text.isEmpty ||
+                              phoneController.text.isEmpty ||
+                              addressController.text.isEmpty) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Row(
@@ -102,8 +114,11 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                             return;
                           }
                           context.read<AuthCubit>().signUp(
+                            name: nameController.text,
                             email: emailController.text,
                             password: passwordController.text,
+                            phone: phoneController.text,
+                            address: addressController.text,
                           );
                         },
                       ),
