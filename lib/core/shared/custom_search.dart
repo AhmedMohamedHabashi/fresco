@@ -5,7 +5,7 @@ import 'package:fresco/core/utils/text_style/app_text_style.dart';
 
 class CustomSearch extends StatelessWidget {
   final String hintText;
-
+  final Function(String)? onChanged;
   final Color? borderColor;
   final double? borderWidth;
   final bool showBorder, showShadow;
@@ -21,6 +21,7 @@ class CustomSearch extends StatelessWidget {
     this.showShadow = true,
     this.readOnly = false,
     this.onTap,
+    this.onChanged,
   });
 
   @override
@@ -42,6 +43,7 @@ class CustomSearch extends StatelessWidget {
             : [],
       ),
       child: TextField(
+        onChanged: onChanged,
         readOnly: readOnly,
         onTap: onTap,
         cursorColor: AppColors.primaryColor,

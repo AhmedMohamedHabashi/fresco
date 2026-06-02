@@ -1,105 +1,81 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
-import 'package:fresco/feature/product_list/data/models/list_model.dart';
-import 'package:fresco/feature/wishlist/data/wishlist_controller.dart';
+import 'package:fresco/feature/product_list/domain/entities/product.dart';
+import 'package:fresco/feature/home/presentation/cubit/favorites_cubit.dart';
 
-class PhotoSection extends StatefulWidget {
-  final ListModel product;
-  final bool isFavorite;
-  final VoidCallback? onTapFavorite;
+class PhotoSection extends StatelessWidget {
+  final Product product;
 
-  final String? selectedSize;
-  final Color? selectedColor;
+  const PhotoSection({super.key, required this.product});
 
-  const PhotoSection({
-    super.key,
-    required this.product,
-    required this.isFavorite,
-    this.onTapFavorite,
-    this.selectedSize,
-    this.selectedColor,
-  });
-
-  @override
-  State<PhotoSection> createState() => _PhotoSectionState();
-}
-
-class _PhotoSectionState extends State<PhotoSection> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          height: 250.h,
-          decoration: BoxDecoration(
-            color: AppColors.mediumGrey,
-            border: Border.all(color: AppColors.primaryColor),
+    return Container(
+      height: 250.h,
+      decoration: BoxDecoration(
+        color: AppColors.white,
+        border: Border.all(color: AppColors.primaryColor),
+        borderRadius: BorderRadius.circular(20.r),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.black.withOpacity(0.08),
+            blurRadius: 12.r,
+            offset: const Offset(0, 6),
+          ),
+        ],
+      ),
+      child: Stack(
+        children: [
+          /// IMAGE
+          ClipRRect(
             borderRadius: BorderRadius.circular(20.r),
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.black.withOpacity(0.08),
-                blurRadius: 12.r,
-                offset: Offset(0, 6.r),
-              ),
-            ],
+            child: Image.network(
+              product.image,
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.contain,
+            ),
           ),
-          child: Stack(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20.r),
-                child: Image.asset(
-                  widget.product.image,
-                  width: double.infinity,
-                  height: double.infinity,
-                  fit: BoxFit.cover,
-                ),
-              ),
 
-              Positioned(
-                top: 10.h,
-                right: 10.w,
-                child: GestureDetector(
-                  onTap: () async {
-                    final productToSave = widget.product.copyWith(
-                      selectedSize: widget.selectedSize,
-                      selectedColor: widget.selectedColor,
-                    );
+          /// HEART BUTTON
+          Positioned(
+            top: 10.h,
+            right: 10.w,
+            child: BlocBuilder<FavoritesCubit, Set<int>>(
+              builder: (context, favorites) {
+                final isFav = favorites.contains(product.id);
 
-                    await WishlistController.toggle(productToSave);
-
-                    if (widget.onTapFavorite != null) {
-                      widget.onTapFavorite!();
-                    }
-
-                    setState(() {});
+                return GestureDetector(
+                  onTap: () {
+                    context.read<FavoritesCubit>().toggle(product.id);
                   },
-                  child: ValueListenableBuilder(
-                    valueListenable: WishlistController.items,
-                    builder: (context, items, _) {
-                      final isFav = items.any((e) => e.id == widget.product.id);
-
-                      return AnimatedContainer(
-                        duration: const Duration(milliseconds: 200),
-                        padding: EdgeInsets.all(6.w),
-                        decoration: const BoxDecoration(
-                          color: AppColors.white,
-                          shape: BoxShape.circle,
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 200),
+                    padding: EdgeInsets.all(6.w),
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 4,
                         ),
-                        child: Icon(
-                          isFav ? Icons.favorite : Icons.favorite_border,
-                          color: AppColors.primaryColor,
-                          size: 20.sp,
-                        ),
-                      );
-                    },
+                      ],
+                    ),
+                    child: Icon(
+                      isFav ? Icons.favorite : Icons.favorite_border,
+                      color: AppColors.primaryColor,
+                      size: 20.sp,
+                    ),
                   ),
-                ),
-              ),
-            ],
+                );
+              },
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

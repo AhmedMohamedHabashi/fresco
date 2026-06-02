@@ -1,23 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fresco/feature/cart/data/cart_item.dart';
 import 'package:fresco/feature/orderReview/presentation/widgets/Order_Info_Card.dart';
 import 'package:fresco/feature/orderReview/presentation/widgets/Order_Product_Card.dart';
 import 'package:fresco/feature/orderReview/presentation/widgets/Order_Summary_Section.dart';
-import 'package:fresco/feature/product_list/data/models/list_model.dart';
 
 class OrderReviewBody extends StatelessWidget {
-  const OrderReviewBody({super.key, required this.product});
+  final List<CartItemModel> products;
+  final double totalPrice;
 
-  final ListModel product;
+  const OrderReviewBody({
+    super.key,
+    required this.products,
+    required this.totalPrice,
+  });
+
+  double get subtotal =>
+      products.fold(0, (sum, item) => sum + item.product.price * item.quantity);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        OrderProductCard(product: product),
-        SizedBox(height: 30.h),
+        ...products.map(
+          (item) => Column(
+            children: [
+              OrderProductCard(product: item.product),
+              SizedBox(height: 20.h),
+            ],
+          ),
+        ),
 
-        OrderSummarySection(price: product.price),
+        SizedBox(height: 10.h),
+
+        OrderSummarySection(subtotal: subtotal, shipping: 50, tax: 20),
+
         SizedBox(height: 30.h),
 
         OrderInfoCard(
@@ -27,6 +44,7 @@ class OrderReviewBody extends StatelessWidget {
           subtitle: "**** **** **** 1234",
           isPayment: true,
         ),
+
         SizedBox(height: 20.h),
 
         OrderInfoCard(

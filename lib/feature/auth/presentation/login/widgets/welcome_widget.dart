@@ -25,7 +25,7 @@ class WelcomeWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 25.h),
+            SizedBox(height: 20.h),
             Text(
               title,
               style: AppTextStyle.bodyText22.copyWith(

@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fresco/feature/product_list/data/models/list_model.dart';
-import 'package:fresco/feature/product_details/presentation/widgets/color_section.dart';
-import 'package:fresco/feature/product_details/presentation/widgets/description_section.dart';
-import 'package:fresco/feature/product_details/presentation/widgets/name_price_section.dart';
-import 'package:fresco/feature/product_details/presentation/widgets/product_rating_and_counter_section.dart';
-import 'package:fresco/feature/product_details/presentation/widgets/photo_section.dart';
-import 'package:fresco/feature/product_details/presentation/widgets/size_section.dart';
+import 'package:fresco/feature/product_list/domain/entities/product.dart';
+
+import 'name_price_section.dart';
+import 'product_rating_and_counter_section.dart';
+import 'description_section.dart';
+import 'photo_section.dart';
+// import 'size_section.dart';
+// import 'color_section.dart';
 
 class AllSectionDetails extends StatefulWidget {
-  final ListModel product;
-  final Function(String size) onSizeChanged;
-  final Function(Color color) onColorChanged;
+  final Product product;
 
-  final String selectedSize;
-  final Color selectedColor;
+  // final Function(String size) onSizeChanged;
+  // final Function(Color color) onColorChanged;
+
+  // final String selectedSize;
+  // final Color selectedColor;
 
   const AllSectionDetails({
     super.key,
     required this.product,
-    required this.onSizeChanged,
-    required this.onColorChanged,
-    required this.selectedSize,
-    required this.selectedColor,
+    // required this.onSizeChanged,
+    // required this.onColorChanged,
+    // required this.selectedSize,
+    // required this.selectedColor,
   });
 
   @override
@@ -30,8 +32,6 @@ class AllSectionDetails extends StatefulWidget {
 }
 
 class _AllSectionDetailsState extends State<AllSectionDetails> {
-  bool isFavorite = false;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -39,51 +39,24 @@ class _AllSectionDetailsState extends State<AllSectionDetails> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          PhotoSection(
-            product: widget.product,
-            isFavorite: isFavorite,
-            selectedSize: widget.selectedSize,
-            selectedColor: widget.selectedColor,
-            onTapFavorite: () {
-              setState(() {
-                isFavorite = !isFavorite;
-              });
-            },
-          ),
-
+          PhotoSection(product: widget.product),
           SizedBox(height: 20.h),
-
           NamePriceSection(product: widget.product),
-
           SizedBox(height: 10.h),
-
           ProductRatingAndCounterSection(product: widget.product),
-
           SizedBox(height: 10.h),
-
           DescriptionSection(product: widget.product),
-
-          SizedBox(height: 19.h),
-
-          SizeSection(
-            sizes: widget.product.sizes,
-            onSizeSelected: (size) {
-              widget.onSizeChanged(size);
-            },
-          ),
-
-          SizedBox(height: 10.h),
-
-          ColorSection(
-            colors: widget.product.colors,
-            onColorSelected: (color) {
-              widget.onColorChanged(color);
-            },
-          ),
-
           SizedBox(height: 30.h),
         ],
       ),
     );
   }
+
+  //   List<String> _getSizes(Product product) {
+  //     return ["38", "39", "40", "41"];
+  //   }
+
+  //   List<Color> _getColors(Product product) {
+  //     return [Colors.black, Colors.blue, Colors.red];
+  //   }
 }

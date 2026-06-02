@@ -4,16 +4,21 @@ import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/core/utils/text_style/app_text_style.dart';
 
 class ItemDetails extends StatelessWidget {
-  final String title, size;
-  final Color? color;
+  final String title, subtitle;
   final bool isCart;
+  final VoidCallback? onDelete;
+  String getShortText(String text) {
+    final words = text.split(' ');
+    if (words.length <= 3) return text;
+    return '${words[0]} ${words[1]} ${words[2]}';
+  }
 
   const ItemDetails({
     super.key,
     required this.title,
+    required this.subtitle,
     required this.isCart,
-    required this.color,
-    required this.size,
+    required this.onDelete,
   });
 
   @override
@@ -27,35 +32,42 @@ class ItemDetails extends StatelessWidget {
               child: Text(
                 title,
                 maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 style: AppTextStyle.bodyText18.copyWith(
                   color: AppColors.mainColor,
                 ),
               ),
             ),
-            Icon(
-              isCart ? Icons.delete_outline : Icons.favorite,
-              color: AppColors.mainColor,
+
+            GestureDetector(
+              onTap: isCart ? onDelete : null,
+              child: Icon(
+                isCart ? Icons.delete_outline : Icons.favorite,
+                color: AppColors.mainColor,
+              ),
             ),
           ],
         ),
-        SizedBox(height: 3.h),
+
+        SizedBox(height: 4.h),
+
         Row(
           children: [
-            Container(
-              width: 12.w,
-              height: 12.h,
-              decoration: BoxDecoration(
-                color: color ?? Colors.grey,
-                shape: BoxShape.circle,
-                border: Border.all(color: Colors.black12, width: 0.5),
-              ),
-            ),
-            SizedBox(width: 5.w),
             Text(
-              "Color | Size: $size", // خليناها ثابتة تظهر الكلمتين في الحالتين
+              getShortText(subtitle),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: AppTextStyle.bodyText14.copyWith(
                 color: AppColors.descriptionColor,
               ),
+            ),
+
+            SizedBox(width: 6.w),
+
+            const Icon(
+              Icons.check_circle_rounded,
+              size: 14,
+              color: AppColors.mainColor,
             ),
           ],
         ),

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/core/utils/text_style/app_text_style.dart';
-import 'package:fresco/feature/product_list/data/models/list_model.dart';
+import 'package:fresco/feature/product_list/domain/entities/product.dart';
 
 class ProductRatingAndCounterSection extends StatefulWidget {
-  final ListModel product;
+  final Product product;
 
   const ProductRatingAndCounterSection({super.key, required this.product});
 
@@ -52,7 +52,7 @@ class _ProductRatingAndCounterSectionState
             const Icon(Icons.star, color: Colors.amber),
             SizedBox(width: 4.w),
             Text(
-              widget.product.rating,
+              widget.product.rating.toString(),
               style: AppTextStyle.bodyText14.copyWith(
                 color: AppColors.mainColor,
               ),

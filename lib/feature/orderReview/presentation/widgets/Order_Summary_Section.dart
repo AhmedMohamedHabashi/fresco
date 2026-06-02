@@ -4,17 +4,20 @@ import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/core/utils/text_style/app_text_style.dart';
 
 class OrderSummarySection extends StatelessWidget {
-  final String price;
+  final double subtotal;
+  final double shipping;
+  final double tax;
 
-  const OrderSummarySection({super.key, required this.price});
+  const OrderSummarySection({
+    super.key,
+    required this.subtotal,
+    required this.shipping,
+    required this.tax,
+  });
 
   @override
   Widget build(BuildContext context) {
-    double subtotal =
-        double.tryParse(price.replaceAll(RegExp(r'[^0-9.]'), '')) ?? 0.0;
-    double shipping = 50.0;
-    double tax = 20.0;
-    double total = subtotal + shipping + tax;
+    final total = subtotal + shipping + tax;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,13 +30,16 @@ class OrderSummarySection extends StatelessWidget {
           ),
         ),
         SizedBox(height: 12.h),
-        _buildBillDetail("Subtotal", "EGP ${subtotal.toStringAsFixed(2)}"),
-        _buildBillDetail("Shipping Fee", "EGP ${shipping.toStringAsFixed(2)}"),
-        _buildBillDetail("Tax Fee", "EGP ${tax.toStringAsFixed(2)}"),
+
+        _buildBillDetail("Subtotal", "\$ ${subtotal.toStringAsFixed(2)}"),
+        _buildBillDetail("Shipping Fee", "\$ ${shipping.toStringAsFixed(2)}"),
+        _buildBillDetail("Tax Fee", "\$ ${tax.toStringAsFixed(2)}"),
+
         const Divider(),
+
         _buildBillDetail(
           "Total Order",
-          "EGP ${total.toStringAsFixed(2)}",
+          "\$ ${total.toStringAsFixed(2)}",
           isTotal: true,
         ),
       ],

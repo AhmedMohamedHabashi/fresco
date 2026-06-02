@@ -16,4 +16,6 @@ class AppColors {
   static const Color green = Color(0xFF02B935);
   static const Color coralRed = Color(0xFFFF645A);
   static const Color yellow = Color(0xFFF4B400);
+  static const Color errMessage = Color(0xFFEF9A9A);
+  static const Color errMassgeText = Color(0xFFEF5350);
 }

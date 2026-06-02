@@ -60,7 +60,6 @@ class HomeHeader extends StatelessWidget {
         ),
 
         Positioned(
-          // دي علشان احط السيرش بار فوق الكونتينر اللي في الجريدينت
           bottom: -15.h,
           left: 35.w,
           right: 35.w,
