@@ -8,15 +8,12 @@ import 'package:fresco/feature/product_list/data/repo/product_repository_impl.da
 import 'package:fresco/feature/product_list/domain/usecases/get_products.dart';
 import 'package:fresco/feature/product_list/domain/usecases/search_products.dart';
 import 'app.dart';
-import 'core/network/dio_helper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   await Firebase.initializeApp();
-
-  final dio = DioHelper.dio;
   final remoteDataSource = ProductRemoteDataSource();
   final repo = ProductRepositoryImpl(remoteDataSource);
   final usecase = GetProducts(repo);

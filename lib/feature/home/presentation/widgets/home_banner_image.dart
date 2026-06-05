@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/core/shared/shimmer/banner_shimmer.dart';
-import 'package:fresco/core/utils/assets_helper/assets_helper.dart';
+import 'package:fresco/core/utils/helpers/assets_helper/assets_helper.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 
 class HomeBannerImage extends StatefulWidget {

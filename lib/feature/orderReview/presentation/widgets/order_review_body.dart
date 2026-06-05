@@ -35,7 +35,7 @@ class OrderReviewBody extends StatelessWidget {
 
         OrderSummarySection(subtotal: subtotal, shipping: 50, tax: 20),
 
-        SizedBox(height: 30.h),
+        SizedBox(height: 10.h),
 
         OrderInfoCard(
           sectionTitle: "Payment Method",

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/config/routes/app_routes.dart';
+import 'package:fresco/core/utils/helpers/assets_helper/assets_helper.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/core/utils/text_style/app_text_style.dart';
 import 'package:fresco/feature/cart/data/cart_item.dart';
@@ -10,6 +11,7 @@ import 'package:fresco/feature/cart/presentation/widgets/appbar_cart.dart';
 import 'package:fresco/feature/cart/presentation/widgets/checkout_section.dart';
 import 'package:fresco/feature/wishlist/presentation/widgets/cart_item.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lottie/lottie.dart' as lottie;
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -27,16 +29,12 @@ class CartScreen extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(
-                    Icons.remove_shopping_cart_outlined,
-                    size: 70.sp,
-                    color: AppColors.primaryColor,
-                  ),
+                  lottie.Lottie.asset(AssetsHelper.emptyCart, repeat: true),
                   SizedBox(height: 10.h),
                   Text(
                     "Your cart is empty",
                     style: AppTextStyle.bodyText16.copyWith(
-                      color: AppColors.primaryColor,
+                      color: AppColors.primaryColor.withOpacity(0.5),
                     ),
                   ),
                 ],
