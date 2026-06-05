@@ -51,7 +51,6 @@ class _QuantitySelectorState extends State<QuantitySelector> {
 
           SizedBox(width: 15.w),
 
-          // زرار الزائد (+)
           GestureDetector(
             onTap: () {
               setState(() {

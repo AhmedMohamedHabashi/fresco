@@ -9,6 +9,9 @@ class AssetsHelper {
   static const String productImg5 = 'assets/images/cart_home_5.jpg';
   static const String productImg10 = 'assets/images/cart_home_10.jpg';
   static const String productImg11 = 'assets/images/cart_home_11.jpg';
+  static const String emptyWishlist = 'assets/lottie/empty_wishlist.json';
+  static const String emptyCart = 'assets/lottie/empty_cart.json';
+  static const String emptySearch = 'assets/lottie/search.json';
   static const List<String> imagesList = [
     'assets/images/HomeList.jpg',
     'assets/images/HomeList_1.jpg',

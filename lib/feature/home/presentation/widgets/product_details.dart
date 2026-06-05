@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fresco/core/utils/assets_helper/assets_helper.dart';
+import 'package:fresco/core/utils/helpers/assets_helper/assets_helper.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/core/utils/text_style/app_text_style.dart';
 import 'package:fresco/feature/cart/presentation/cubit/cart_cubit.dart';

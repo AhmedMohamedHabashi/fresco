@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/config/routes/app_routes.dart';
-import 'package:fresco/core/utils/assets_helper/assets_helper.dart';
+import 'package:fresco/core/utils/helpers/assets_helper/assets_helper.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/feature/category/presentation/widgets/header_search.dart';
 import 'package:go_router/go_router.dart';

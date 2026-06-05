@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
 import 'package:fresco/feature/search/presentation/widgets/trending_searches.dart';
+import 'package:fresco/core/utils/helpers/assets_helper/assets_helper.dart';
 import 'package:lottie/lottie.dart';
 
 class SearchInitialWidget extends StatelessWidget {
@@ -19,9 +20,7 @@ class SearchInitialWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: 180.w,
-                  height: 180.w,
-                  child: Lottie.asset('assets/lottie/search.json'),
+                  child: Lottie.asset(AssetsHelper.emptySearch, repeat: true),
                 ),
                 Text(
                   "Search for products",

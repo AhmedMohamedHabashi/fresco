@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:fresco/core/network/api_constants.dart';
+import 'package:fresco/core/network/constants/api_constants.dart';
 
 class DioHelper {
   static Dio dio = Dio(

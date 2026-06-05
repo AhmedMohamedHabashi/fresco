@@ -1,4 +1,7 @@
+import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fresco/core/errors/app_errors.dart';
+import 'package:fresco/core/errors/exceptions.dart';
 import '../../domain/usecases/get_products.dart';
 import '../../domain/usecases/search_products.dart';
 import 'product_state.dart';
@@ -16,7 +19,7 @@ class ProductCubit extends Cubit<ProductState> {
       final products = await getProducts();
       emit(ProductLoaded(products));
     } catch (e) {
-      emit(ProductError(e.toString()));
+      _handleError(e);
     }
   }
 
@@ -32,7 +35,19 @@ class ProductCubit extends Cubit<ProductState> {
       final products = await searchProducts(query);
       emit(ProductLoaded(products));
     } catch (e) {
-      emit(ProductError(e.toString()));
+      _handleError(e);
+    }
+  }
+
+  void _handleError(Object e) {
+    if (e is NetworkException) {
+      emit(ProductError(AppErrors.networkError));
+    } else if (e is AppTimeoutException) {
+      emit(ProductError(AppErrors.timeoutError));
+    } else if (e is ServerException) {
+      emit(ProductError(AppErrors.serverError));
+    } else {
+      emit(ProductError(AppErrors.unexpectedError));
     }
   }
 }

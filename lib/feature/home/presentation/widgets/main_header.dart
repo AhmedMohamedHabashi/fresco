@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/config/routes/app_routes.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
+import 'package:fresco/core/utils/helpers/greeting_helper.dart';
 import 'package:fresco/core/utils/text_style/app_text_style.dart';
 import 'package:fresco/feature/account/presentation/cubit/account_cubit.dart';
 import 'package:fresco/feature/account/presentation/cubit/account_state.dart';
@@ -22,7 +23,8 @@ class MainHeader extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Good Morning', style: AppTextStyle.bodyText16),
+            Text(GreetingHelper.getGreeting(), style: AppTextStyle.bodyText16),
+            SizedBox(height: 5.h),
             BlocBuilder<AccountCubit, AccountState>(
               builder: (context, state) {
                 if (state is AccountLoaded) {

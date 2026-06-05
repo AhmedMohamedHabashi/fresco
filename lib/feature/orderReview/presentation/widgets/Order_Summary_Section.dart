@@ -29,7 +29,7 @@ class OrderSummarySection extends StatelessWidget {
             color: AppColors.primaryColor,
           ),
         ),
-        SizedBox(height: 12.h),
+        SizedBox(height: 10.h),
 
         _buildBillDetail("Subtotal", "\$ ${subtotal.toStringAsFixed(2)}"),
         _buildBillDetail("Shipping Fee", "\$ ${shipping.toStringAsFixed(2)}"),
