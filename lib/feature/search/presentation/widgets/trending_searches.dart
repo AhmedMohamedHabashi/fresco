@@ -67,14 +67,13 @@ class _ChipItemState extends State<_ChipItem> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30.r),
 
-            // ✨ شكل modern (glass feel)
             color: AppColors.primaryColor.withOpacity(0.08),
 
             border: Border.all(color: AppColors.primaryColor.withOpacity(0.15)),
 
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.03),
+                color: AppColors.black.withOpacity(0.03),
                 blurRadius: 10,
                 offset: const Offset(0, 4),
               ),

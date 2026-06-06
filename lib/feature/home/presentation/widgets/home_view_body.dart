@@ -19,72 +19,75 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const HomeHeader(),
-            const HomeBannerImage(),
-            const SectionTitle(title: 'Popular Products'),
+      body: Padding(
+        padding: EdgeInsets.only(bottom: 16.h),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const HomeHeader(),
+              const HomeBannerImage(),
+              const SectionTitle(title: 'Popular Products'),
 
-            BlocBuilder<ProductCubit, ProductState>(
-              builder: (context, state) {
-                if (state is ProductLoading) {
-                  return const ProductShimmer();
-                }
+              BlocBuilder<ProductCubit, ProductState>(
+                builder: (context, state) {
+                  if (state is ProductLoading) {
+                    return const ProductShimmer();
+                  }
 
-                if (state is ProductLoaded) {
-                  return BlocBuilder<FavoritesCubit, Set<int>>(
-                    builder: (context, favorites) {
-                      return ProductsList(
-                        products: state.products,
-                        favorites: favorites,
+                  if (state is ProductLoaded) {
+                    return BlocBuilder<FavoritesCubit, Set<int>>(
+                      builder: (context, favorites) {
+                        return ProductsList(
+                          products: state.products,
+                          favorites: favorites,
 
-                        onTapFavorite: (productId) {
-                          context.read<FavoritesCubit>().toggle(productId);
-                        },
-                      );
-                    },
-                  );
-                }
-                if (state is ProductError) {
-                  return Center(
-                    child: Container(
-                      margin: EdgeInsets.symmetric(
-                        vertical: 30.h,
-                        horizontal: 20.w,
-                      ),
-                      padding: EdgeInsets.all(16.w),
-                      decoration: BoxDecoration(
-                        color: Colors.red.shade50,
-                        borderRadius: BorderRadius.circular(16.r),
-                        border: Border.all(color: AppColors.errMessage),
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            Icons.error_outline,
-                            color: AppColors.errMassgeText,
-                            size: 40.sp,
-                          ),
-                          SizedBox(height: 12.h),
-                          Text(
-                            state.message,
-                            textAlign: TextAlign.center,
-                            style: AppTextStyle.bodyText14.copyWith(
+                          onTapFavorite: (productId) {
+                            context.read<FavoritesCubit>().toggle(productId);
+                          },
+                        );
+                      },
+                    );
+                  }
+                  if (state is ProductError) {
+                    return Center(
+                      child: Container(
+                        margin: EdgeInsets.symmetric(
+                          vertical: 30.h,
+                          horizontal: 20.w,
+                        ),
+                        padding: EdgeInsets.all(16.w),
+                        decoration: BoxDecoration(
+                          color: Colors.red.shade50,
+                          borderRadius: BorderRadius.circular(16.r),
+                          border: Border.all(color: AppColors.errMessage),
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.error_outline,
                               color: AppColors.errMassgeText,
+                              size: 40.sp,
                             ),
-                          ),
-                        ],
+                            SizedBox(height: 12.h),
+                            Text(
+                              state.message,
+                              textAlign: TextAlign.center,
+                              style: AppTextStyle.bodyText14.copyWith(
+                                color: AppColors.errMassgeText,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                }
+                    );
+                  }
 
-                return const SizedBox.shrink();
-              },
-            ),
-          ],
+                  return const SizedBox.shrink();
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
