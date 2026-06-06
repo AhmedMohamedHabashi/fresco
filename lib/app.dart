@@ -1,4 +1,3 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fresco/feature/account/presentation/cubit/account_cubit.dart';
@@ -39,8 +38,6 @@ class FrescoApp extends StatelessWidget {
           BlocProvider(create: (_) => SearchCubit(searchProducts)),
         ],
         child: MaterialApp.router(
-          builder: DevicePreview.appBuilder,
-          locale: DevicePreview.locale(context),
           debugShowCheckedModeBanner: false,
           routerConfig: router,
           theme: ThemeData(fontFamily: 'Poppins'),

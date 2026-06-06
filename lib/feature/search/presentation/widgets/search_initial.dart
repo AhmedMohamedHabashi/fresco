@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresco/core/utils/colors/app_colors.dart';
+import 'package:fresco/core/utils/text_style/app_text_style.dart';
 import 'package:fresco/feature/search/presentation/widgets/trending_searches.dart';
 import 'package:fresco/core/utils/helpers/assets_helper/assets_helper.dart';
 import 'package:lottie/lottie.dart';
@@ -24,19 +25,17 @@ class SearchInitialWidget extends StatelessWidget {
                 ),
                 Text(
                   "Search for products",
-                  style: TextStyle(
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.primaryColor,
+                  style: AppTextStyle.bodyText20.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.primaryColor.withOpacity(0.5),
                   ),
                 ),
                 SizedBox(height: 5.h),
                 Text(
                   "Find your favorite items instantly",
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 14.sp,
-                    color: AppColors.primaryColor,
+                  style: AppTextStyle.bodyText14.copyWith(
+                    color: AppColors.primaryColor.withOpacity(0.5),
                   ),
                 ),
               ],

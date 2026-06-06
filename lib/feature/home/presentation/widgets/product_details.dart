@@ -7,10 +7,18 @@ import 'package:fresco/core/utils/text_style/app_text_style.dart';
 import 'package:fresco/feature/cart/presentation/cubit/cart_cubit.dart';
 import 'package:fresco/feature/product_list/domain/entities/product.dart';
 
-class ProductDetails extends StatelessWidget {
+class ProductDetails extends StatefulWidget {
   const ProductDetails({super.key, required this.product});
 
   final Product product;
+
+  @override
+  State<ProductDetails> createState() => _ProductDetailsState();
+}
+
+class _ProductDetailsState extends State<ProductDetails> {
+  bool added = false;
+
   String getShortText(String text) {
     final words = text.split(' ');
     if (words.length <= 2) return text;
@@ -27,7 +35,7 @@ class ProductDetails extends StatelessWidget {
         children: [
           SizedBox(height: 5.h),
           Text(
-            product.title,
+            widget.product.title,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: AppTextStyle.bodyText14.copyWith(
@@ -36,28 +44,27 @@ class ProductDetails extends StatelessWidget {
             ),
           ),
 
-          Expanded(
-            child: Row(
-              children: [
-                Text(
-                  getShortText(product.subtitle),
-                  style: AppTextStyle.bodyText12.copyWith(
-                    color: AppColors.mediumGrey,
-                  ),
-                ),
-                Padding(padding: EdgeInsets.only(left: 4.w)),
-                Icon(
-                  Icons.check_circle_rounded,
-                  color: AppColors.primaryColor,
-                  size: 12.sp,
-                ),
-              ],
-            ),
-          ),
           Row(
             children: [
               Text(
-                product.price.toString(),
+                getShortText(widget.product.subtitle),
+                style: AppTextStyle.bodyText12.copyWith(
+                  color: AppColors.mediumGrey,
+                ),
+              ),
+              SizedBox(width: 4.w),
+              Icon(
+                Icons.check_circle_rounded,
+                color: AppColors.primaryColor,
+                size: 12.sp,
+              ),
+            ],
+          ),
+
+          Row(
+            children: [
+              Text(
+                widget.product.price.toString(),
                 style: AppTextStyle.bodyText14.copyWith(
                   color: AppColors.black,
                   fontWeight: FontWeight.bold,
@@ -65,28 +72,52 @@ class ProductDetails extends StatelessWidget {
               ),
             ],
           ),
+
           Row(
             children: [
               Text(
-                product.rating.toString(),
+                widget.product.rating.toString(),
                 style: AppTextStyle.bodyText12.copyWith(color: AppColors.black),
               ),
-              Icon(
-                Icons.star,
-                color: AppColors.yellow,
-                size: AppTextStyle.bodyText12
-                    .copyWith(color: AppColors.black)
-                    .fontSize,
-              ),
+              Icon(Icons.star, color: AppColors.yellow, size: 12.sp),
+
               const Spacer(),
+
               GestureDetector(
                 onTap: () {
-                  context.read<CartCubit>().addToCart(product);
+                  context.read<CartCubit>().addToCart(widget.product);
+
+                  setState(() {
+                    added = true;
+                  });
+
+                  Future.delayed(const Duration(seconds: 1), () {
+                    if (mounted) {
+                      setState(() {
+                        added = false;
+                      });
+                    }
+                  });
                 },
-                child: Image.asset(
-                  AssetsHelper.addToCart,
-                  height: 32.h,
-                  width: 32.w,
+
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  transitionBuilder: (child, animation) {
+                    return ScaleTransition(scale: animation, child: child);
+                  },
+                  child: added
+                      ? Icon(
+                          Icons.check_circle,
+                          key: const ValueKey('check'),
+                          color: AppColors.green,
+                          size: 32.sp,
+                        )
+                      : Image.asset(
+                          AssetsHelper.addToCart,
+                          key: const ValueKey('add'),
+                          height: 32.h,
+                          width: 32.w,
+                        ),
                 ),
               ),
             ],

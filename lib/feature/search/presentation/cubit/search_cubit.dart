@@ -18,14 +18,12 @@ class SearchCubit extends Cubit<SearchState> {
     final q = query.trim();
     _currentQuery = q;
 
-    // لو فاضي → رجّع الواجهة الأساسية
     if (q.isEmpty) {
       _debounce?.cancel();
       emit(SearchInitial());
       return;
     }
 
-    // debounce
     _debounce?.cancel();
 
     _debounce = Timer(const Duration(milliseconds: 500), () async {
