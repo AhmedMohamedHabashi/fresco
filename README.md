@@ -1,16 +1,48 @@
-# fresco
 
-A new Flutter project.
+# 🛍️ Fresco — E-commerce App
 
-## Getting Started
+A Flutter-based e-commerce application built to provide users with a smooth and user-friendly online shopping experience.
 
-This project is a starting point for a Flutter application.
+## 📸 App Preview
 
-A few resources to get you started if this is your first Flutter project:
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AhmedMohamedHabashi/fresco/refs/heads/main/screenshots/Gemini_Generated_Image_e0ni6le0ni6le0ni.jfif" alt="Fresco E-commerce App Preview" width="800" />
+</p>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## ✨ Features
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- 🛍️ Browse products and view product details
+- 🔍 Search for products
+- 🛒 Shopping cart management
+- 🔐 User authentication
+- 💳 Payment interface (UI only, no real payment gateway integration)
+
+## 🛠️ Tech Stack
+
+- Flutter
+- Dart
+
+## 🚀 Getting Started
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/AhmedMohamedHabashi/fresco.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd fresco
+   ```
+3. Install dependencies:
+   ```bash
+   flutter pub get
+   ```
+4. Run the application:
+   ```bash
+   flutter run
+   ```
+
+## 👨‍💻 Developer
+
+**Ahmed Mohamed Habashy**
+
+[GitHub Profile](https://github.com/AhmedMohamedHabashi)
