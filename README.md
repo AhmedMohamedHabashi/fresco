@@ -5,9 +5,11 @@ A Flutter-based e-commerce application built to provide users with a smooth and 
 
 ## 📸 App Preview
 
+
 <p align="center">
-  <img src="https://raw.githubusercontent.com/AhmedMohamedHabashi/fresco/refs/heads/main/screenshots/Gemini_Generated_Image_e0ni6le0ni6le0ni.jfif" alt="Fresco E-commerce App Preview" width="800" />
+  <img src="https://raw.githubusercontent.com/AhmedMohamedHabashi/fresco/refs/heads/main/screenshots/Gemini_Generated_Image_e0ni6le0ni6le0ni.jfif" alt="Fresco E-commerce App Preview" width="500" />
 </p>
+
 
 ## ✨ Features
 
